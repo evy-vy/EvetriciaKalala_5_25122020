@@ -1,0 +1,22 @@
+{
+  "name": "evetriciakalala_5b_25122020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass --watch ./scss/style.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evy-vy/EvetriciaKalala_5b_25122020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evy-vy/EvetriciaKalala_5b_25122020/issues"
+  },
+  "homepage": "https://github.com/evy-vy/EvetriciaKalala_5b_25122020#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.0"
+  }
+}
