@@ -9989,4 +9989,28 @@ td:not([align]), th:not([align]) {
   text-align: left;
 }
 
+body {
+  background: url("../images/vintageCameraBg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+img#logo {
+  width: 60%;
+}
+
+#recherche {
+  margin-top: 5rem;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
