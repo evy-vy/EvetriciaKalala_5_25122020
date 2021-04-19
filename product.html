@@ -8,23 +8,101 @@
       src="https://kit.fontawesome.com/f97e8f3daf.js" crossorigin="anonymous" >
     </script>
     <link rel="stylesheet" href="css/style.css" />
-    <title>Oripix - Appareils Photo vintage</title>
+    <title>Oripix - Nos Appareils Photo</title>
   </head>
     <body>
       <!-- page container -->
-
+      <div class="container-expand">
       <!-- header -->
+      <header class="bg-light fixed-top">
+        <div class="container">
+          <div class="row">
+            <nav class="col navbar navbar-expand-lg navbar-light py-3">
+              <a class="navbar-brand text-white" href="index.html">
+                <img src="./images/logo_without_bg.png"  alt="Logo orinoco" id="logo"/>
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu de navigation">
+                <i class="fas fa-th"></i>
+              </button>
+              <div id="navbarContent" class="collapse navbar-collapse justify-content-md-end">
+                <ul class="navbar-nav">
+                  <li class="nav-item active ">
+                    <a class="nav-link" href="product.html">
+                      <i class="fas fa-camera mx-1-lg">
+                        <span class="camera-name ml-1">Appareil - Zurss 50s</span>
+                      </i>
+                    </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#logIn">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item active" href="#">Me connecter</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Mes commandes</a>
+                    </div>
+                  </li>
+                  <li id="in-bag-nb-item" class="nav-item dropdown">
+                    <a class="nav-link" href="#shop">
+                      <i class="fa fa-shopping-bag">
+                        <span id="in-bag-item-nb">0</span>
+                      </i>
+                    </a>
+                  </li>
+                </ul>
+              </div>           
+            </nav>
+          </div>
+        </div>
+      </header>
       <!-- fin header -->
-
       <!-- main -->
+      <div class="container-fluid">
+        <div id="cameraId" class="camera py-5 mt-5 d-flex">
+        </div>
+      </div>
       <!-- fin main -->
-
+    </main>
       <!-- footer -->
+      <footer class="bg-light text-center">
+        <div class="container mb-2 p-4">
+          <section class="mb-1">
+            <h4 class="footer__title mb-2">- Orinoco -</h4>
+            <!-- réseaux -->
+            <a class="btn btn-outline-dark btn-floating m-1 mb-2 mb-md-4" href="#!" role="button">
+              <i class="fa fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1 mb-2 mb-md-4" href="#!" role="button">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1 mb-2 mb-md-4" href="#!" role="button">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </section>
+          <div class="row pt-2 pb-1">
+            <div class="col">
+              <ul class="footer_list list-inline d-flex justify-content-center font-weight-normal">
+                <li class="list-inline-item"><a href="#">À propos</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="#">Besoin d'aide ?</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="mailto:orinoco@contact.com">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+      </footer>
+    </div>
       <!-- fin footer -->
 
       <!------------ fin page container ------------>
 <!---------------- Script bootstrap & js --------------->
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<!--     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
       <script src="./Js/product.js"></script>
     </body>
 </html>

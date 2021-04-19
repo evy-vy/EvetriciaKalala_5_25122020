@@ -1,0 +1,27 @@
+body {
+  background: url('../images/womanTakingPix.webp') no-repeat fixed;
+  background-size: cover;
+  background-color: #ebebeb;
+}
+
+img#logo {
+  width: 60%;
+}
+
+#recherche {
+  margin-top: 5rem;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.3);
+ }
+
+button.shopping-bag.btn.btn-primary {
+  margin-top: 35px;
+}
+
+ footer {
+  position: absolute;
+  width: 100%;
+}
+
