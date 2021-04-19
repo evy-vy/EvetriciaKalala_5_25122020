@@ -1,0 +1,11 @@
+@mixin little-mobile {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablette {
+  @media screen and (min-width: 768px) and (max-width: 990px){
+    @content;
+  }
+}
