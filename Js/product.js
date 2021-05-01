@@ -89,20 +89,38 @@ function displayCameraById(camera) {
   quantityInput.setAttribute('min', '1');
   quantityInput.setAttribute('max', '5');
 
-  // options 
-  let lenses = document.createElement('span');
-  lenses.classList.add('lenses', 'd-inline-block', 'row-inline', 'fw-bold', 'fs-5', 'sm-mx-2');
-  lenses.innerText = 'Lenses :'
+  // options (titre)
+  let lensesTitle = document.createElement('span');
+  lensesTitle.classList.add('lenses', 'd-inline-block', 'row-inline', 'fw-bold', 'fs-5', 'sm-mx-2');
+  lensesTitle.innerText = 'Lenses :'
 
-  let selectOption = document.createElement('select');
-  selectOption.id = 'apiOptions';
-  selectOption.setAttribute('name', 'apiOptions');
-  selectOption.classList.add('mx-2');
+  // options (select & options).
+  /* Création d'une fonction me permettant dans creer un input select dans lequel je peux lister, grâce à une boucle, les lentilles disponibles pour l'appareil photo selectionné.
+  */
 
-  let option = document.createElement('option');
-  option.setAttribute('value', 'ahah');
-  option.classList.add('mx-2', 'my-2');
-  option.innerText = camera.option;
+  //création des variables nécessaire à la création de la structure du select input et des options
+  let selectOption;
+  let cameraOption;
+  let lenses = camera.lenses;
+
+  const optionsCamera = () => {
+    selectOption = document.createElement('select');
+    selectOption.id = 'selectOptions';
+    selectOption.setAttribute('name', 'selectOptions');
+    selectOption.classList.add('mx-2');
+
+    //pour chaque valeur trouvée dans le array 'lenses' de la camera sélectionnée, une option nouvelle option est créée.
+    for (i = 0; i < lenses.length; i++) {
+      console.log(lenses[i]);
+      cameraOption = document.createElement('option');
+      cameraOption.setAttribute('value', lenses[i]);
+      cameraOption.classList.add('mx-2', 'my-2');
+      cameraOption.innerHTML = lenses[i];
+      selectOption.append(cameraOption);
+    }
+  }
+
+  optionsCamera();
 
   //création du button 'en savoir plus'
   let btn = document.createElement('button');
@@ -120,10 +138,9 @@ function displayCameraById(camera) {
   newDiv.append(newUl);
   newUl.append(newLi);
   newLi.append(title, image, paragraph, containerChoice, btn);
-  containerChoice.append(quantity, lenses);
+  containerChoice.append(quantity, lensesTitle);
   quantity.append(quantityInput);
-  lenses.append(selectOption);
-  selectOption.append(option);
+  lensesTitle.append(selectOption);
   btn.append(link);
   document.getElementById('cameraId').append(newDiv);
 };
