@@ -8,13 +8,10 @@ img#logo {
   width: 60%;
 }
 
-#recherche {
-  margin-top: 5rem;
+/* cards */
+.list {
+  @include cards
 }
-
-.card {
-  background-color: rgba(0, 0, 0, 0.3);
- }
 
  footer {
   position: absolute;

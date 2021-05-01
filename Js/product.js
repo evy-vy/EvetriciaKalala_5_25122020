@@ -1,64 +1,129 @@
-////////////////////////création de la promesse ////////////////
-const promiseGetCameras = new Promise((resolve, reject) => {
-  let request = new XMLHttpRequest();
+/*************************Données globales nécessaires à la construction du projet*************************/
+
+const apiUrlOriginal = 'http://localhost:3000/api/cameras/'; //url API.
+const apiUrlRescue = 'https://jwdp5.herokuapp.com/api/cameras/'; //url de secours.
+let cameras = 'cameras'; //Choix du Produit à vendre.
+let urlId = ""; // récupération de l'id pour affichage individuel des produits. 
+
+/****************************Page-2**Affichage du produit sélectionné par l'internaute**********************/
+
+//Récupération de l'URL de la page sur laquelle on se trouve + ajout de l'id produit.
+
+function getId() {
   let url = window.location.search;
   let params = new URLSearchParams(url);
   let id = params.get('id');
   console.log(id);
-  request.open("Get", `https://jwdp5.herokuapp.com/api/cameras/${id}`)
-  request.onreadystatechange = function () {
-    if (this.readystate == XMLHttpRequest.Done
-      && this.status == 200) {
-      resolve(JSON.parse(this.responseText));
-    } else {
-      reject(this.status);
-    }
-  }
-  request.send();
-});
+  return id;
+}
+urlId = getId();
 
-////////////////////////////récupération de l'état de la promesse/////////////////////////
+/* 
+*  The fetch method, which uses promises, allows to make network requests to retrieve objects from an API.
+*  To get the results of promises, I have to return all the fetch.
+*/
+function selectedUrl(id) {
+  return fetch(apiUrlOriginal + id)
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => {
+      alert(error);
+    })
+}
 
-promiseGetCameras
-  .then((camera) => {
-    console.log(camera);
-    let elementCamera = document.getElementById('cameraId');
-    elementCamera.innerHTML +=
-      `<div class="row">
-        <ul class="col-12 col-md-7 col-xl-6">
-          <li class="card card-body text-white lead mt-3">
-            <h5 class=" card-title h4 font-weight-bold text-uppercase">${camera.name}
-            </h5>
-            <img src="${camera.imageUrl}">
-            <p class = "description__text mt-3 mb-4 lead">${camera.description}</p>
-            <span class="price text-dark lead font-weight-bold mb-4">
-              <strong><u>Prix : ${camera.price / 100} €</u><strong>
-            </span>
-            <form>
-              <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                  <h5>Quantité
-                  <input type="number name="howMuch" step="1" value="1" min="1" max="5" class="ml-1 col-2"></input>
-                  </h5>
-                  <h5>Lenses
-                  <select class="custom-select mr-sm-2 ml-3 col-5" id="choixDesLentilles">
-                    <option value="1">${camera.lenses[0]}</option>
-                    // <option value="2">${camera.lenses[1]}</option>
-                  </select>
-                </h5>
-                </div>
-              </div>
-            </form>
-            <button id= addToCart type="button" class ="btn btn-info btn-lg">
-              <a href="product.html?id=${camera._id}" mb-1 text-light">
-                Ajouter au panier
-              </a>
-            </button>
-          </li>
-        <ul>
-      </div>`
-  })
-promiseGetCameras
-  .catch(dataStatus => {
-    console.log(dataStatus);
-  });
+//Me permet de récuperer et d'afficher le produit sélectionné selon son id
+async function cameraId() {
+  let camera = await selectedUrl(urlId);
+  displayCameraById(camera);
+}
+cameraId();
+
+function displayCameraById(camera) {
+
+  //création d'une ligne
+  let newDiv = document.createElement('div');
+  newDiv.classList.add('row');
+
+  //création d'une liste désordonnée
+  let newUl = document.createElement('ul');
+  newUl.classList.add('class', 'list', 'col-10', 'col-sm-9', 'col-md-7', 'col-lg-6', 'col-xl-5');
+
+  // création d'une liste
+  let newLi = document.createElement('li');
+  newLi.classList.add('list__card', 'card', 'border-secondary', 'text-center', 'card-body', 'text-black', 'lead', 'mt-5');
+
+  //// Dans la liste : ////
+
+  // ajout du titre
+  let title = document.createElement('h2');
+  title.classList.add('list__title', 'card-title', 'card-header', 'text-uppercase', 'text-center', 'col-12', 'mb-3');
+  title.innerHTML = camera.name;
+
+  // de l'image
+  let image = document.createElement('img');
+  image.src = camera.imageUrl;
+  image.classList.add('list__image', 'card-img-top');
+  image.setAttribute('alt', 'appareil photo ' + camera.name);
+
+  // du paragraphe descriptif
+  let paragraph = document.createElement('p');
+  paragraph.classList.add('list__description', 'mt-3', 'mb-3', 'lead');
+  paragraph.innerText = camera.description;
+
+  //containerChoice
+  let containerChoice = document.createElement('div');
+  containerChoice.classList.add('containerChoice', 'container-fluid', 'd-flex', 'flex-wrap', 'mb-3')
+
+  // quantité
+  let quantity = document.createElement('span');
+  quantity.classList.add('quantity', 'row-inline', 'fw-bold', 'fs-5');
+  quantity.innerText = 'Quantité :'
+
+  let quantityInput = document.createElement('input');
+  quantityInput.id = 'quantity';
+  quantityInput.classList.add('mx-2', 'my-2');
+  quantityInput.setAttribute('type', 'number');
+  quantityInput.setAttribute('name', 'quantity');
+  quantityInput.setAttribute('value', '1');
+  quantityInput.setAttribute('min', '1');
+  quantityInput.setAttribute('max', '5');
+
+  // options 
+  let lenses = document.createElement('span');
+  lenses.classList.add('lenses', 'd-inline-block', 'row-inline', 'fw-bold', 'fs-5', 'sm-mx-2');
+  lenses.innerText = 'Lenses :'
+
+  let selectOption = document.createElement('select');
+  selectOption.id = 'apiOptions';
+  selectOption.setAttribute('name', 'apiOptions');
+  selectOption.classList.add('mx-2');
+
+  let option = document.createElement('option');
+  option.setAttribute('value', 'ahah');
+  option.classList.add('mx-2', 'my-2');
+  option.innerText = camera.option;
+
+  //création du button 'en savoir plus'
+  let btn = document.createElement('button');
+  btn.id = 'cardBtn';
+  btn.setAttribute('type', 'button');
+  btn.classList.add('list__btn', 'btn', 'col-7', 'col-sm-5', 'col-md-4', 'col-md-5', 'center');
+
+  //lien du bouton, vers la page produit
+  let link = document.createElement('a');
+  link.href = 'panier.html';
+  link.classList.add('mb-1', 'text-light');
+  link.innerText = 'Ajouter au panier';
+
+  //ajout de chaque élément ci-dessus au html
+  newDiv.append(newUl);
+  newUl.append(newLi);
+  newLi.append(title, image, paragraph, containerChoice, btn);
+  containerChoice.append(quantity, lenses);
+  quantity.append(quantityInput);
+  lenses.append(selectOption);
+  selectOption.append(option);
+  btn.append(link);
+  document.getElementById('cameraId').append(newDiv);
+};

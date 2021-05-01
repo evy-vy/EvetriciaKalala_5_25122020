@@ -2,19 +2,66 @@ body {
   background: url('../images/womanTakingPix.webp') no-repeat fixed;
   background-size: cover;
   background-color: #ebebeb;
+  background-position: 320px -120px;
+  @include small-mobile{
+    background: none;
+    background-color: #ebebeb;
+  }
+  @include mobile {
+    background-position: -5px -50px;
+  }
+  @include tablette {
+    background-position: -5px -50px;
+  }
 }
 
 img#logo {
   width: 60%;
 }
 
-#recherche {
-  margin-top: 5rem;
+// #recherche {
+//   margin-top: 5rem;
+// }
+#cameraId {
+  display: block;
+  // align-items: center;
+  margin-top: 30px;
 }
 
-.card {
-  background-color: rgba(0, 0, 0, 0.3);
- }
+.row {
+  justify-content: start;
+  margin-left: 20px;
+  @include small-mobile {
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
+.list {
+  @include cards;
+}
+
+.containerChoice {
+  display: inline-block;
+  justify-content: space-evenly;
+  @include small-mobile {
+    justify-content: start;
+  }
+}
+
+select#apiOptions {
+  margin-top: 8px;
+}
+
+.lenses {
+  display: inline-block;
+}
+
+input,
+select {
+  line-height: normal!important;
+  font-size: 1.1rem;
+}
 
 button.shopping-bag.btn.btn-primary {
   margin-top: 35px;

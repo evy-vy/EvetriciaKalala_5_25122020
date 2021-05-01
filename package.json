@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scss": "sass --watch ./scss/style.scss:./css/style.css"
+    "scss": "sass --watch ./scss/style.scss:./css/style.css ./scss/pageProduit.scss:./css/pageProduit.css"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/evy-vy/EvetriciaKalala_5b_25122020#readme",
   "dependencies": {
-    "bootstrap": "^4.6.0"
+    "bootstrap": "^5.0.0-beta3"
   }
 }
