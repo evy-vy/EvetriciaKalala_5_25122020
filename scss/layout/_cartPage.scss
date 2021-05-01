@@ -1,0 +1,20 @@
+// body {
+//   // background: url('../images/vintageCameraBg.webp') no-repeat fixed;
+//   // background-size: cover;
+//   // background-color: #ebebeb;
+// }
+
+img#logo {
+  width: 60%;
+}
+
+/* cards */
+.list {
+  @include cards
+}
+
+ footer {
+  position: absolute;
+  width: 100%;
+}
+

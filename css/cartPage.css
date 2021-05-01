@@ -10790,49 +10790,11 @@ td:not([align]), th:not([align]) {
   text-align: left;
 }
 
-body {
-  background: url("../images/womanTakingPix.webp") no-repeat fixed;
-  background-size: cover;
-  background-color: #ebebeb;
-  background-position: 320px -120px;
-}
-@media screen and (max-width: 576px) {
-  body {
-    background: none;
-    background-color: #ebebeb;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  body {
-    background-position: -5px -50px;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 990px) {
-  body {
-    background-position: -5px -50px;
-  }
-}
-
 img#logo {
   width: 60%;
 }
 
-#cameraId {
-  display: block;
-  margin-top: 30px;
-}
-
-.row {
-  justify-content: start;
-  margin-left: 20px;
-}
-@media screen and (max-width: 576px) {
-  .row {
-    justify-content: center;
-    margin-left: 0;
-  }
-}
-
+/* cards */
 .list {
   display: flex;
 }
@@ -10861,37 +10823,9 @@ img#logo {
   margin-bottom: 0.5rem;
 }
 
-.containerChoice {
-  display: inline-block;
-  justify-content: space-evenly;
-}
-@media screen and (max-width: 576px) {
-  .containerChoice {
-    justify-content: start;
-  }
-}
-
-select#apiOptions {
-  margin-top: 8px;
-}
-
-.lenses {
-  display: inline-block;
-}
-
-input,
-select {
-  line-height: normal !important;
-  font-size: 1.1rem;
-}
-
-button.shopping-bag.btn.btn-primary {
-  margin-top: 35px;
-}
-
 footer {
   position: absolute;
   width: 100%;
 }
 
-/*# sourceMappingURL=pageProduit.css.map */
+/*# sourceMappingURL=cartPage.css.map */

@@ -7,23 +7,20 @@
     <script
       src="https://kit.fontawesome.com/f97e8f3daf.js" crossorigin="anonymous" >
     </script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arsenal&family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/productPage.css" />
-    <title>Oripix - Nos Appareils Photo</title>
+    <link rel="stylesheet" href="css/cartPage.css" />
+    <title>Oripix - Finalisez vos achats!</title>
   </head>
-    <body>
-      <!-- page container -->
-      <div class="container-expand">
-      <!-- header -->
+  <body>
+    <!-- page container -->
+    <div class="container-expand">
       <header class="bg-light fixed-top">
         <div class="container">
           <div class="row">
             <nav class="topNav col navbar navbar-expand-lg navbar-light py-3">
-              <a class="navbar-brand text-white" href="index.html">
+              <a class="navbar-brand text-white" href="product.html">
                 <img src="./images/logo_without_bg.png"  alt="Logo orinoco" id="logo"/>
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu de navigation">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportContent" aria-controls="navbarSupportContent" aria-expanded="false" aria-label="Menu de navigation">
                 <i class="fas fa-th"></i>
               </button>
               <div id="navbarSupportContent" class="collapse navbar-collapse justify-content-md-end">
@@ -31,7 +28,7 @@
                   <li class="nav-item active ">
                     <a class="nav-link" href="index.html">
                       <i class="fas fa-camera mx-1-lg">
-                        <span class="ml-1">Appareils photo vintage</span>
+                        <span class="ml-1 navInfo">Appareils photo vintage</span>
                       </i>
                     </a>
                   </li>
@@ -59,21 +56,19 @@
         </div>
       </header>
       <!-- fin header -->
-      <!-- main -->
-      <main>
-        <div class="container-fluid">
-          <div id="cameraId" class="camera-group py-5"></div>
-          <div>
+        <!-- main -->
+        <main>
+          <div class="container-fluid">
+            <div id="camerasContainer" class="camera-group py-5"></div>
           </div>
-        </div>
-      </main>
-      <!-- fin main -->
-      <!-- footer -->
+        </main>
+        <!-- fin main -->
+        <!-- footer -->
+      <!-- fin header -->
       <footer class="bg-light text-center">
         <div class="container mb-2 p-4">
           <section class="mb-1">
             <h4 class="footer__title mb-2">- Orinoco -</h4>
-            <!-- réseaux -->
             <a class="btn btn-outline-dark btn-floating m-1 mb-2 mb-md-4" href="#!" role="button">
               <i class="fa fa-facebook-f"></i>
             </a>
@@ -96,13 +91,12 @@
             </div>
           </div>
       </footer>
-    </div>
       <!-- fin footer -->
-
-      <!------------ fin page container ------------>
+    </div>
+    <!------------ fin page container ------------>
 <!---------------- Script bootstrap & js --------------->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-      <script src="./Js/product.js"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="./Js/cart.js"></script>
+  </body>
 </html>

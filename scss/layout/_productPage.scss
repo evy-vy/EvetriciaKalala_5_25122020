@@ -8,10 +8,16 @@ body {
     background-color: #ebebeb;
   }
   @include mobile {
-    background-position: -5px -50px;
+    background-position: -0.3rem -3rem;
   }
   @include tablette {
-    background-position: -5px -50px;
+    background-position: -0.3rem -3rem;
+  }
+  @include desktop {
+    background-position: 10rem -3rem;
+  }
+  @include big-desktop {
+    background-position: 15rem -3rem;
   }
 }
 
@@ -49,8 +55,8 @@ img#logo {
   }
 }
 
-select#apiOptions {
-  margin-top: 8px;
+select#selectOptions {
+  margin-top: 7px !important;
 }
 
 .lenses {
@@ -59,7 +65,7 @@ select#apiOptions {
 
 input,
 select {
-  line-height: normal!important;
+  line-height: normal !important;
   font-size: 1.1rem;
 }
 

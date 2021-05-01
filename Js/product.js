@@ -92,7 +92,7 @@ function displayCameraById(camera) {
   // options (titre)
   let lensesTitle = document.createElement('span');
   lensesTitle.classList.add('lenses', 'd-inline-block', 'row-inline', 'fw-bold', 'fs-5', 'sm-mx-2');
-  lensesTitle.innerText = 'Lenses :'
+  lensesTitle.innerText = 'Lentilles :'
 
   // options (select & options).
   /* Création d'une fonction me permettant dans creer un input select dans lequel je peux lister, grâce à une boucle, les lentilles disponibles pour l'appareil photo selectionné.
@@ -130,7 +130,7 @@ function displayCameraById(camera) {
 
   //lien du bouton, vers la page produit
   let link = document.createElement('a');
-  link.href = 'panier.html';
+  link.href = 'cart.html';
   link.classList.add('mb-1', 'text-light');
   link.innerText = 'Ajouter au panier';
 
