@@ -1,5 +1,5 @@
 // body {
-//   // background: url('../images/vintageCameraBg.webp') no-repeat fixed;
+//   // background: url("../images/vintageCameraBg.webp") no-repeat fixed;
 //   // background-size: cover;
 //   // background-color: #ebebeb;
 // }
@@ -8,9 +8,118 @@ img#logo {
   width: 60%;
 }
 
-/* cards */
-.list {
-  @include cards
+.jumboContainer {
+  position: relative;
+  height: 400px;
+  // background-color: #f8dee3;
+}
+
+.jumbotron {
+  width: auto;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  background: url("../images/cameraWithPinkBg.webp") no-repeat fixed;
+  background-size: cover;
+  background-position: left center;
+  margin-top: 95px;
+  &__title {
+    margin: 200px 100px 0 50px;
+    font-weight: bold;
+  }
+}
+
+/* Cart page */
+.products-mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 100px;
+  // background-color: azure;
+}
+
+.products-container{
+  // max-width: 650px;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 50px;
+  // background-color: pink;
+}
+
+.products {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 4px solid lightgrey;
+  &__header { 
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid lightgrey;
+    margin: 0 auto;
+    // background-color: grey;
+  }
+  &__title {
+    width: 45%;
+  }
+  &__price {
+    width: 15%;
+    display: flex;
+    // align-items: center;
+    // background-color: lightseagreen;
+  }
+  &__total {
+    width: 10%;
+    display: flex;
+    // align-items: center;
+    // background-color: magenta;
+  }
+  &__quantity {
+    width: 30%;
+    display: flex;
+    // align-items: center;
+    // background-color: yellow;
+  }
+  &__list {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    // align-items: center;
+    margin-left: -15px;
+    padding-bottom: 10px 0;
+    // background-color: greenyellow;
+  }
+}
+
+.productImg {
+  width: 20%;
+}
+
+.cartTotalContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container__form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  // width: 100%;
+}
+
+form {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 2px dashed #f8dee3;
+}
+
+.form-title {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  text-align: center;
 }
 
  footer {

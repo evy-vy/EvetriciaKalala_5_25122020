@@ -21,6 +21,11 @@
     font-size: 1rem;
     margin-left: 1rem;
     }  
+    &__price {    
+    align-self: start;
+    color: lightcoral;
+    font-weight: bold;
+    }
     &__btn {
       background-color: #c0b38d;
       border-color: #c0b38d;

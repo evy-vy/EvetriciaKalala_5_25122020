@@ -9,7 +9,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Arsenal&family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/productPage.css" />
+    <link rel="stylesheet" href="css/confirmationPage.css" />
     <title>Oripix - Nos Appareils Photo</title>
   </head>
     <body>
@@ -58,16 +58,26 @@
           </div>
         </div>
       </header>
-      <!-- fin header -->
-      <!-- main -->
       <main>
-        <div class="container-fluid">
-          <div id="cameraId" class="camera-group py-5"></div>
-          <div>
-          </div>
-        </div>
+        <container>
+          <section class="confirmation">
+            <h1 class="confirmation__title">Confirmation de commande</h1>
+            <p class="confirmation__title">
+              Bonjour user.name,<br>
+              Nous vous remercions d"avoir passé commande chez Oripix. 
+            </p>
+            <h2 class="details">Détails de la commande</h2>
+            <ul>
+              <li>Commande : purshaseId passée le purshaseDate.</li>
+              <li>Montant de la commande : totalPurshase</li>
+              <li>Mode de paiement : CB</li>
+              <li>Mode de livraison : En pousse-pousse</li>
+              <li>Date de lvraison estimée : Dans 1 an</li>
+            </ul>
+            <p>Merci et à bientôt</p>
+          </section>
+        </container>
       </main>
-      <!-- fin main -->
       <!-- footer -->
       <footer class="bg-light text-center">
         <div class="container mb-2 p-4">
@@ -96,11 +106,11 @@
           </div>
       </footer>
       <!-- fin footer -->
-  </div>
+    </div>
     <!------------ fin page container ------------>
 <!---------------- Script bootstrap & js --------------->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-      <script src="./Js/product.js"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="./Js/confirmation.js"></script>
+  </body>
 </html>
