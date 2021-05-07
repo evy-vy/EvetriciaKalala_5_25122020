@@ -19,7 +19,7 @@ function getId() {
 urlId = getId();
 
 function selectedUrl(id) {
-  return fetch(apiUrlOriginal + id)
+  return fetch(apiUrlRescue + id)
     .then(response => {
       return response.json();
     })

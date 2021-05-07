@@ -10,7 +10,7 @@ let cameras = "cameras"; //Choix du Produit à vendre.
 /* La méthode fetch, qui utilise des promesses, permet de faire des requête réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. */
 
 function getArticles() {
-  return fetch(apiUrlOriginal)
+  return fetch(apiUrlRescue)
     .then(response => {
       return response.json();
     })
