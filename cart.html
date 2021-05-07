@@ -7,7 +7,7 @@
     <script
       src="https://kit.fontawesome.com/f97e8f3daf.js" crossorigin="anonymous" >
     </script>
-    <link rel="stylesheet" href="css/cartPage.css" />
+    <link rel="stylesheet" href="css/cart-page.css" />
     <title>Oripix - Panier</title>
   </head>
   <body>
@@ -76,64 +76,49 @@
 
         <div class="products-mainContainer contain">
           <!-- headings -->
-          <div class="products-container row col-11 d-flex mx-auto mt-5 pb-5">
+          <div id= "products-container" class=" row col-11 d-flex mx-auto mt-5 pb-5">
             <div class="products__header">
+              <i class="fas fa-times-circle" id="removeAll"></i>
               <h5 class="products__title">Article</h5>
               <h5 class="products__price">Prix</h5>
               <h5 class="products__quantity">Quantité</h5>
               <h5 class="products__total">Total</h5>
             </div>
             <!-- liste produit -->
-            <div class="products fs-6">
-              <div class="products__list col-4">
-                <i class="fas fa-times-circle"></i>
-                <img src= ./images/aCameraInFrontOfAWindow.webp class="productImg">
-                <span>Zurss s50</span>
-              </div>
-              <div class="price col-2">100,00€</div>
-              <div class="quantity col-3">
-                <i class="fas fa-chevron-circle-left"></i>
-                <span>1</span>
-                <i class="fas fa-chevron-circle-right"></i>
-              </div>
-              <div class="total col-2" total>100,00€</div>
+            <div class="cartItems fs-6" id="cartItems">
             </div>
-              <div class="cartTotalContainer" >
-                <h4 class="cartTotalTitle">Total :<h4>
-                <h4 class="cartTotal">100,00€</h4>
-              </div>
-            <!-- </div> -->
+            <div id="cartTotalAmountDiv">
           </div>
         </div> 
         <section class="container container__form">
           <h2 class="form-title col-9">Inscrivez-vous pour poursuivre vos achats !</h2>
-            <form method="POST" action="js/cart.js" class="col-12">
+            <form method="POST" action="js/cart.js" class="col-12" id="inscription">
               <div class="row">
                 <div class ="form-group col-10 col-md-6 mb-2">
                   <label for ="Prénom">Nom :</label>
-                  <input class="form-control" id="Prénom" placeholder="Votre nom" required>
+                  <input class="form-control" id="lastName" placeholder="Votre nom" required>
                 </div>
                 <div class ="form-group col-10 col-md-6 mb-2">
                   <label for ="Prénom">Prénom :</label>
-                  <input class="form-control" id="Prénom" placeholder="Votre prénom" required>
+                  <input class="form-control" id="firstName" placeholder="Votre prénom" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-12 mb-2">
                   <label for="inputAddress">Adresse</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Votre adresse" required>
+                  <input type="text" class="form-control" id="address" placeholder="Votre adresse" required>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6 mb-2">
                     <label for="inputCity">Ville</label>
-                    <input type="text" class="form-control" id="inputCity" placeholder="Votre ville" required>
+                    <input type="text" class="form-control" id="city" placeholder="Votre ville" required>
                   </div>
                 </div>
                 <div class="form-group col-md-6 mb-2">
                   <label for="inputEmail">Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Votre email" required>
+                  <input type="email" class="form-control" id="email" placeholder="Votre email" required>
                 </div>
-              <button type="submit" class="btn btn-primary checked">Sign in</button>
+              <button type="submit" id="sendBtn" class="btn btn-primary checked">Envoyer</button>
             </form>
         </section>
       </main>
