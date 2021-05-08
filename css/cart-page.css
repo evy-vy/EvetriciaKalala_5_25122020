@@ -10844,7 +10844,6 @@ img#logo {
   display: flex;
   justify-content: space-around;
   border-bottom: 4px solid lightgrey;
-  flex-direction: row;
 }
 
 .products__header {

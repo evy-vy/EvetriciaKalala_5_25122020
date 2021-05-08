@@ -62,7 +62,7 @@ img#logo {
   display: flex;
   justify-content: space-around;
   border-bottom: 4px solid lightgrey;
-  flex-direction: column;
+  // flex-direction: column;
 }
 .products {
   &__header { 

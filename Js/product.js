@@ -6,7 +6,9 @@ let cameras = "cameras"; //Choix du Produit à vendre.
 let urlId = ""; // récupération de l"id pour affichage individuel des produits. 
 
 /****************************Page-2**Affichage du produit sélectionné par l"internaute**********************/
-
+//permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
+let compteur = document.getElementById("howManyInBag");
+compteur.innerHTML = localStorage.length;
 //Récupération de l"URL de la page sur laquelle on se trouve + ajout de l"id produit.
 
 function getId() {
@@ -72,7 +74,6 @@ function getLocalStorageEltById(id, option) {
   return null;
 
 }
-
 
 function displayCameraById(camera) {
   // création d"une ligne

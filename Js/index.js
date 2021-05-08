@@ -5,6 +5,9 @@ const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secour
 let cameras = "cameras"; //Choix du Produit à vendre.
 
 /*******************************Page-1**Affichage de l"enssemble des produits*******************************/
+//permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
+let compteur = document.getElementById("howManyInBag");
+compteur.innerHTML = localStorage.length;
 /***********************************Récupération des éléments dans l"api***********************************/
 
 /* La méthode fetch, qui utilise des promesses, permet de faire des requête réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. */
