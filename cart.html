@@ -60,7 +60,7 @@
       <!-- fin header -->
         <!-- main -->
       <main>
-        <div class="container-fluid jumboContainer">
+        <div class="container jumboContainer">
           <div class="row">
             <div class="col-12">
               <div class="jumbotron">
@@ -74,53 +74,69 @@
             <h1 class="display-4">Shop</h1>
         </div> -->
 
-        <div class="products-mainContainer contain">
+        <div class="products-mainContainer container-expand">
           <!-- headings -->
-          <div id= "products-container" class=" row col-11 d-flex mx-auto mt-5 pb-5">
-            <div class="products__header">
+          <div id= "products-container" class=" row col-11 d-flex mx-auto mt-5 pb-3">
+            <ul class="products__header">
               <i class="fas fa-times-circle" id="removeAll"></i>
-              <h5 class="products__title">Article</h5>
-              <h5 class="products__price">Prix</h5>
-              <h5 class="products__quantity">Quantité</h5>
-              <h5 class="products__total">Total</h5>
-            </div>
-            <!-- liste produit -->
-            <div class="cartItems fs-6" id="cartItems">
+              <li>
+                <span class="products__title">Article</span>
+              </li>
+              <li>
+                <span class="products__price">Prix</span>
+              </li>
+              <li>
+                <span class="products__quantity">Quantité</span>
+              </li>
+              <li>
+                <span class="products__total">Total</span>
+              </li>
+            </ul>
+            <!-- liste articles -->
+            <div class="cartItems" id="cartItems">
             </div>
             <div id="cartTotalAmountDiv">
               <p class="montantTotal">Montant Total :</p>
           </div>
         </div> 
+        <!-- FORM -->
         <section class="container container__form">
           <h2 class="form-title col-9">Inscrivez-vous pour poursuivre vos achats !</h2>
-            <form method="POST" action="js/cart.js" class="col-12" id="inscription">
-              <div class="row">
-                <div class ="form-group col-10 col-md-6 mb-2">
-                  <label for ="Prénom">Nom :</label>
-                  <input class="form-control" id="lastName" placeholder="Votre nom" required>
-                </div>
-                <div class ="form-group col-10 col-md-6 mb-2">
-                  <label for ="Prénom">Prénom :</label>
-                  <input class="form-control" id="firstName" placeholder="Votre prénom" required>
-                </div>
+          <form method="POST" action="js/cart.js" class="col-12" id="inscription">
+            <div class="row">
+              <div class ="form-group col-10 col-md-6 mb-2">
+                <label for ="lastName">Nom :</label>
+                <input class="form-control" name="lastName"  placeholder="Votre nom" maxlength="20" required>
+                <small id="warning"></small>
+              </div>
+              <div class ="form-group col-10 col-md-6 mb-2">
+                <label for ="firstName">Prénom :</label>
+                <input class="form-control" name="firstName" placeholder="Votre prénom" maxlength="20" required>
+                <small id="warning"></small>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-12 mb-2">
+                <label for="address">Adresse</label>
+                <input type="text" class="form-control" name="address"  placeholder="Votre adresse" required>
+                <small id="warning"></small>
               </div>
               <div class="form-row">
-                <div class="form-group col-12 mb-2">
-                  <label for="inputAddress">Adresse</label>
-                  <input type="text" class="form-control" id="address" placeholder="Votre adresse" required>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6 mb-2">
-                    <label for="inputCity">Ville</label>
-                    <input type="text" class="form-control" id="city" placeholder="Votre ville" required>
-                  </div>
-                </div>
                 <div class="form-group col-md-6 mb-2">
-                  <label for="inputEmail">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Votre email" required>
+                  <label for="city">Ville</label>
+                  <input type="text" class="form-control" name="city"  placeholder="Votre ville" required>
+                  <small id="warning"></small>
                 </div>
-              <button type="submit" id="sendBtn" class="btn btn-primary checked">Envoyer</button>
-            </form>
+              </div>
+              <div class="form-group col-md-6 mb-2">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email"  placeholder="Votre email" required>
+                <small id="emailWarning"></small>
+              </div>
+              <div class="form-group">
+                <input type="submit"  value="Envoyer" class="btn btn-primary checked"></input>
+              </div>
+          </form>
         </section>
       </main>
       <!-- fin main -->

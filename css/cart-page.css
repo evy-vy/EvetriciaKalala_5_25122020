@@ -10831,54 +10831,92 @@ img#logo {
 }
 
 #removeAll,
-.fas.fa-times-circle,
+.fas.fa-times-circle {
+  display: flex;
+  align-items: center;
+  color: blue;
+  cursor: pointer;
+  margin-left: -15px;
+}
+
 .fas.fa-chevron-circle-left,
 .fas.fa-chevron-circle-right {
   color: blue;
   cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .cartItems {
   display: flex;
-  justify-content: space-around;
-  border-bottom: 4px solid lightgrey;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.listContainer {
+  border-bottom: 2px solid lightgrey;
 }
 
 .products__header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   border-bottom: 4px solid lightgrey;
-  margin: 0 auto;
-}
-.products__title {
-  width: 45%;
+  font-weight: bold;
 }
 .products__price {
-  width: 15%;
   display: flex;
+  margin-right: 15px;
 }
 .products__total {
-  width: 10%;
   display: flex;
 }
 .products__quantity {
-  width: 30%;
   display: flex;
 }
 .products__list {
-  width: 45%;
   display: flex;
-  justify-content: space-around;
-  margin-left: -15px;
 }
 
 .itemImg {
-  width: 45%;
+  width: 12%;
   object-fit: cover;
+  margin-left: -15px;
+}
+@media screen and (max-width: 576px) {
+  .itemImg {
+    margin-left: 5px;
+  }
 }
 
+@media screen and (max-width: 576px) {
+  .imgName {
+    width: 40px;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.quantityInput {
+  font-size: 10px;
+}
+@media screen and (max-width: 576px) {
+  .quantityInput {
+    width: 30px;
+    text-align: center;
+  }
+}
+
+#cartTotalAmountDiv {
+  border-bottom: 4px solid lightgrey;
+  padding: 3px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+/********************FORM*******************/
 .container__form {
   display: flex;
   flex-direction: column;
@@ -10904,6 +10942,11 @@ form {
 footer {
   position: absolute;
   width: 100%;
+}
+@media screen and (max-width: 576px) {
+  footer {
+    font-size: 0.875rem;
+  }
 }
 
 /*# sourceMappingURL=cart-page.css.map */

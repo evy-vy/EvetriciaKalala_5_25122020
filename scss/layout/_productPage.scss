@@ -70,7 +70,10 @@ button.shopping-bag.btn.btn-primary {
 }
 
  footer {
-  position: relative;
+  position: absolute;
   width: 100%;
+  @include small-mobile {
+    font-size: 0.875rem;
+  }
 }
 
