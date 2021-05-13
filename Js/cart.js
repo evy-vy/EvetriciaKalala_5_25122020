@@ -153,76 +153,97 @@ removeAll.addEventListener("click", (e) => {
 
 // récupération du formulaire
 let form = document.querySelector("#inscription");
-console.log('email :', form.email);
+console.log('form :', form);
 
-//On écoute la modification de l'email
-form.email.addEventListener('change', () => {
+//On écoute les modifications apportées dans l'évenement que l'on cible (input email).
+form.email.addEventListener('change', (e) => {
 
-  //this permet de surveiller les changements apporté par l'utilisateur au moment de la saisie dans l'élément que l'on est en train d'écouter soit form.email.
-  validEmail(this);
+  //je récupère la balise qui me permettra de transmettre un message au client selon que la valeur saisie dans l'evenement cible est bon ou mauvais en fonction du type que l'on attend.
+  let element = document.getElementById("emailWarning");
+  verifInput(e.target.value, "email", element);
+});
+
+form.lastName.addEventListener('change', (e) => {
+  let element = document.getElementById("lastNameWarning");
+  verifInput(e.target.value, "string", element);
+});
+
+form.firstName.addEventListener('change', (e) => {
+  let element = document.getElementById("firstNameWarning");
+  verifInput(e.target.value, "string", element);
+});
+
+form.address.addEventListener('change', (e) => {
+  let element = document.getElementById("addressWarning");
+  verifInput(e.target.value, "address", element);
+});
+
+form.city.addEventListener('change', (e) => {
+  let element = document.getElementById("cityWarning");
+  verifInput(e.target.value, "string", element);
+});
+
+//On écoute la soumission du fomrulaire
+form.submit.addEventListener('submit', (e) => {
+  e.preventDefault();
+  verifInput(e.target.value, "email", "string", "address", element);
 });
 
 
-
 /************************** Validation FORM******************************/
-// creation de la fonction validEmail qui récupère la variable passé dans la fonction validEmail(this). On la nomme comme on le souhaite
 
-const validEmail = (inputEmail) => {
+/*fonction qui me permet de vérifier le type de la valeur saisie dans les champs selon que ce soit un email, un string ou une adresse par rapport à la regExp qui lui est attribué. 
+* un message est ensuite affichée si la valeur est bonne ou fausse
+*/
+const verifInput = (value, type, element) => {
+  console.log("coucou  :", value);
+  console.log("coucou  :", type);
+  let regExp;
 
-  //création de la reg exp pour vérification email
-  let emailRegExp = new RegExp("^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}");
-  console.log('reg exp :', emailRegExp);
-
-  //On test l'expression régulière.
-  let testEmail = emailRegExp.test(inputEmail.value);
-  console.log(testEmail);
-
-
-  //récupération de la balise small
-  let small = document.getElementById("emailWarning");
-  console.log("small :", small);
-
-  if (testEmail) {
-    small.innerHTML = 'Données valides';
-    small.classList.remove('text-danger');
-    small.classList.add('text-success');
-  } else {
-    small.innerHTML = 'Données non valides';
-    small.classList.remove('text-success');
-    small.classList.add('text-danger');
+  //on vérifie que les champs soient bien remplis et qu'aucun espace ou tab etc seul ne soit accepté comme valeur valide.
+  if (value.trim() === "") {//
+    element.innerHTML = 'Données non valides';
+    element.classList.remove('text-success');
+    element.classList.add('text-danger');
+    return false;
   }
+  switch (type) {
+    case "email":
+      console.log("verif");
+      regExp = new RegExp("^[0-9a-zA-Z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}");
+      break;
+    case "string":
+      console.log("string");
+      regExp = new RegExp("^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]+$");
+      break;
+    case "address":
+      console.log("address");
+      regExp = new RegExp("^[-'a-zA0-9-ZÀ-ÖØ-öø-ÿ ]+$");
+      break;
+  }
+  //verifie la valeur envoyé dans l'input
+  if (regExp.test(value)) {
+    console.log("ok");
+    element.innerHTML = 'Données valides';
+    element.classList.remove('text-danger');
+    element.classList.add('text-success');
+    return true;
+  } else {
+    console.log("pas ok");
+    element.innerHTML = 'Données non valides';
+    element.classList.remove('text-success');
+    element.classList.add('text-danger');
+    return false;
+  };
 
-  //On écoute la soumission du fomrulaire
-  form.email.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validEmail(form.email)) {
-      form.submit();
-    }
-  });
-};
+}
 
-
-
-  // const validAdress = (inputAdress) => {
-  //   const adressRegExp = new RegExp("^[a-zA-ZÀ-ú\-\s]");
-  //   console.log('strings :', inputAdress.test);
-  //   return adressRegExp.test(inputAdress);
-  // }
-
-
-  // /* On test l'expression régulière.
-  // * la variable est égale à l'expression régulière. 
-  // * on passe en param ce que l'utilisateur à tapé dans le form*/
-  // if (emailRegExp.test(inputEmail.value)) {
-  //   small.innerHTML = "Données valides";
-  //   small.classList.remove('text-danger');
-  //   small.classList.add('text-success');
-  // } else {
-  //   small.innerHTML = "Données non valides";
-  //   small.classList.remove('text-success');
-  //   small.classList.add('text-danger');
-  // }
-
+if (localStorage.length === 0) {
+  console.log("vide");
+  alert("Pensez à remplir votre panier avant de passer commande!")
+} else if (verifInput(form.email.type) && verifInput(form.lastName.type) && verifInput(form.firstName.type) && verifInput(form.city.type) && verifInput(form.address.type))
+  console.log("envoyé");
+alert("Votre commande à bien été pris en compte!");
 
 
 /* ^ = désigne le début du text
