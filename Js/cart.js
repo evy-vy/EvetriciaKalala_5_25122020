@@ -183,12 +183,13 @@ form.city.addEventListener('change', (e) => {
   verifInput(e.target.value, "string", element);
 });
 
-//On écoute la soumission du fomrulaire
-form.submit.addEventListener('submit', (e) => {
+//Soumission du formulaire. On met l'écouteur d'évènement directement sur le form et on écoute l'évènement.
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  verifInput(e.target.value, "email", "string", "address", element);
-});
+  e.stopPropagation();
 
+  checkForSubmit(e.target); //On envoi le form pour récupérer les champs
+});
 
 /************************** Validation FORM******************************/
 
@@ -201,10 +202,13 @@ const verifInput = (value, type, element) => {
   let regExp;
 
   //on vérifie que les champs soient bien remplis et qu'aucun espace ou tab etc seul ne soit accepté comme valeur valide.
+  // if (localStorage.length === 0) {
+  //   console.log("vide");
+  //   alert("Pensez à remplir votre panier avant de passer commande!");
   if (value.trim() === "") {//
-    element.innerHTML = 'Données non valides';
-    element.classList.remove('text-success');
-    element.classList.add('text-danger');
+    element.innerHTML = "Données non valides";
+    element.classList.remove("text-success");
+    element.classList.add("text-danger");
     return false;
   }
   switch (type) {
@@ -221,29 +225,71 @@ const verifInput = (value, type, element) => {
       regExp = new RegExp("^[-'a-zA0-9-ZÀ-ÖØ-öø-ÿ ]+$");
       break;
   }
-  //verifie la valeur envoyé dans l'input
+  console.log("value: ", value); //verifie la valeur envoyé dans l'input
   if (regExp.test(value)) {
     console.log("ok");
-    element.innerHTML = 'Données valides';
-    element.classList.remove('text-danger');
-    element.classList.add('text-success');
+    if (element != undefined) {
+      element.innerHTML = "Données valides";
+      element.classList.remove("text-danger");
+      element.classList.add("text-success");
+    }
     return true;
   } else {
     console.log("pas ok");
-    element.innerHTML = 'Données non valides';
-    element.classList.remove('text-success');
-    element.classList.add('text-danger');
+    if (element != undefined) {
+      element.innerHTML = "Données non valides";
+      element.classList.remove("text-success");
+      element.classList.add("text-danger");
+    }
     return false;
   };
-
 }
 
-if (localStorage.length === 0) {
-  console.log("vide");
-  alert("Pensez à remplir votre panier avant de passer commande!")
-} else if (verifInput(form.email.type) && verifInput(form.lastName.type) && verifInput(form.firstName.type) && verifInput(form.city.type) && verifInput(form.address.type))
-  console.log("envoyé");
-alert("Votre commande à bien été pris en compte!");
+// fonction qui verifie que les champs sont tous bons pour l'envoi
+
+const checkForSubmit = (form) => {
+  let fields = [
+    {
+      "type": "email",
+      "value": form.elements["email"].value,
+    },
+    {
+      "type": "string",
+      "value": form.elements["lastName"].value,
+    },
+    {
+      "type": "string",
+      "value": form.elements["firstName"].value,
+    },
+    {
+      "type": "address",
+      "value": form.elements["address"].value,
+    },
+    {
+      "type": "string",
+      "value": form.elements["city"].value,
+    }
+  ];
+
+  let isValid = false;
+
+  fields.forEach((item) => {
+    //on parcours notre tableaux de champs, et on execute notre fonction de vérification
+    isValid = verifInput(item["value"], item["type"]);
+  })
+
+  //si tous les champs sont bons isValid sera égal a true
+  if (isValid) {
+    if (localStorage.length === 0) {
+      console.log("vide");
+      alert("Pensez à remplir votre panier avant de passer commande !")
+    } else {
+      // tout est ok on envois le formulaire
+      console.log("on envoi le formulaire");
+      alert("Votre commande à bien été prise en compte !");
+    }
+  };
+};
 
 
 /* ^ = désigne le début du text
