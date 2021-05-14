@@ -31,7 +31,7 @@
                   <li class="nav-item active ">
                     <a class="nav-link" href="index.html">
                       <i class="fas fa-camera mx-1-lg">
-                        <span class="ml-1">Appareils photo vintage</span>
+                        <span class="ml-1">Appareils photo vintage - Commande</span>
                       </i>
                     </a>
                   </li>
@@ -58,29 +58,31 @@
           </div>
         </div>
       </header>
-      <main>
-        <container>
-          <section class="confirmation">
-            <h1 class="confirmation__title">Confirmation de commande</h1>
-            <p class="confirmation__title">
-              Bonjour user.name,<br>
-              Nous vous remercions d"avoir passé commande chez Oripix. 
-            </p>
-            <h2 class="details">Détails de la commande</h2>
-            <ul>
-              <li>Commande : purshaseId passée le purshaseDate.</li>
-              <li>Montant de la commande : totalPurshase</li>
-              <li>Mode de paiement : CB</li>
-              <li>Mode de livraison : En pousse-pousse</li>
-              <li>Date de lvraison estimée : Dans 1 an</li>
-            </ul>
-            <p>Merci et à bientôt</p>
-          </section>
-        </container>
-      </main>
+
+      <container>
+        <main>
+          <div class="container container__confirmation">
+            <section class="confirmation">
+              <h1 class="confirmation__title">Confirmation de commande</h1><br><br>
+              <p id = "greeting" class="confirmation__greeting"> 
+                --></p><br><br>
+              <h2 class="confirmation__details">Détails de la commande</h2><br><br>
+              <ul>
+                <li id="purchaseId">Commande : purshaseId passée le purshaseDate.</li>
+                <li id="totalPurchase">Montant de la commande : totalPurshase</li>
+                <li id="payment">Mode de paiement : CB</li>
+                <li id="delivery">Mode de livraison : En pousse-pousse</li>
+                <li id = date>Date de livraison estimée : Dans 1 an</li>
+              </ul><br><br>
+              <p>Merci et à bientôt</p>
+            </section>
+          </div>
+        </container> 
+        </main>
+      </container>
       <!-- footer -->
       <footer class="bg-light text-center">
-        <div class="container mb-2 p-4">
+        <div class="container p-4">
           <section class="mb-1">
             <h4 class="footer__title mb-2">- Orinoco -</h4>
             <a class="btn btn-outline-dark btn-floating m-1 mb-2 mb-md-4" href="#" role="button">

@@ -77,13 +77,13 @@ function displayArticles(camera) {
   let btn = document.createElement("a");
   // btn.id = "cardBtn";
   // btn.setAttribute("type", "button");
-  // btn.classList.add("list__btn", "btn", "col-7", "col-sm-5", "col-md-4", "center");
+  // btn.classList.add("list__btn", "btn", "col-7", "col-sm-5", "col-md-4", "col-lg-5", "center");
 
 
   // lien du bouton, vers la page produit
   let link = document.createElement("a");
   link.href = "product.html?id=" + camera._id;
-  link.classList.add("mb-1", "text-light", "btn", "list__btn", "btn-lg");
+  link.classList.add("mb-1", "text-light", "btn", "list__btn");
   link.innerText = "En savoir plus";
 
   //ajout de chaque élément ci-dessus au html

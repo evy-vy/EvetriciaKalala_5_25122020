@@ -1,7 +1,9 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
 
 const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
+const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
 const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
+const apiUrlPost = "https://jwdp5.herokuapp.com/api/cameras/order/" // url post
 let cameras = "cameras"; //Choix du Produit à vendre.
 let montantPanier = 0;
 /*******************************Page-3**Le Panier*******************************/
@@ -245,6 +247,55 @@ const verifInput = (value, type, element) => {
   };
 }
 
+function sendOrder(form) {
+  let order = [];
+  let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans me formulaire et les formtes
+  formData.forEach(function (value, key) { //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
+    order[key] = value;
+  })
+  console.log(order);
+  let productsList = [];
+  let montantCommande = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    console.log(i);
+    let key = localStorage.key(i);
+    console.log(key, localStorage.getItem(key));
+    let itemsInCart = JSON.parse(localStorage.getItem(key));
+    console.log('articles :', itemsInCart);
+    productsList.push(itemsInCart.id);
+    montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
+  }
+  console.log(montantCommande);
+  let post = {
+    "contact": {
+      "firstName": order.firstName,
+      "lastName": order.lastName,
+      "email": order.email,
+      "address": order.address,
+      "city": order.city
+    },
+    "products": productsList
+  }
+  console.log("post :", post);
+  return fetch(apiUrlPostOriginal, { // ce que j'envoie
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(post)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('data :', data); //retour de la requête
+      let commande = encodeURIComponent(JSON.stringify(data)); //permet formter l'objet reçu en réponse en string pour pourvoir le passer dans l'url à envoyer a confirmation.html
+      window.location.replace("confirmation.html?commande=" + commande + "&" + "montantCommande=" + montantCommande); //redirection
+    })
+    .catch(error => { // en cas d'erreur
+      alert(error);
+    })
+};
+
 // fonction qui verifie que les champs sont tous bons pour l'envoi
 
 const checkForSubmit = (form) => {
@@ -276,6 +327,9 @@ const checkForSubmit = (form) => {
   fields.forEach((item) => {
     //on parcours notre tableaux de champs, et on execute notre fonction de vérification
     isValid = verifInput(item["value"], item["type"]);
+    if (!isValid) { //si isValid est false on sort de la boucle
+      return false
+    }
   })
 
   //si tous les champs sont bons isValid sera égal a true
@@ -286,6 +340,7 @@ const checkForSubmit = (form) => {
     } else {
       // tout est ok on envois le formulaire
       console.log("on envoi le formulaire");
+      sendOrder(form);
       alert("Votre commande à bien été prise en compte !");
     }
   };

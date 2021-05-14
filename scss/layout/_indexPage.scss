@@ -8,6 +8,11 @@ img#logo {
   width: 60%;
 }
 
+.fixed-top
+/* .fixed-bottom*/ {
+  position : unset;
+};
+
 /* cards */
 .list {
   @include cards

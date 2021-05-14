@@ -25,6 +25,11 @@ img#logo {
   width: 60%;
 }
 
+.fixed-top
+/*.fixed-bottom*/ {
+  position : unset;
+};
+
 #cameraId {
   display: block;
   margin-top: 30px;
@@ -70,7 +75,7 @@ button.shopping-bag.btn.btn-primary {
 }
 
  footer {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   @include small-mobile {
     font-size: 0.875rem;

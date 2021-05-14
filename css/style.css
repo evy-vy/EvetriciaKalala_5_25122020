@@ -10800,6 +10800,10 @@ img#logo {
   width: 60%;
 }
 
+.fixed-top {
+  position: unset;
+}
+
 /* cards */
 .list {
   display: flex;
