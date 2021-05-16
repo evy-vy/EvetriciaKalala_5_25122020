@@ -9,6 +9,9 @@ console.log("commande :", commande);
 let result = JSON.parse(commande); //on le transforme en objet pour pouvoir le manipuler
 console.log("result :", result);
 console.log("result :", result.contact.firstName);
+console.log("result last :", result.contact.lastName);
+
+
 
 
 let greeting = document.getElementById("greeting");

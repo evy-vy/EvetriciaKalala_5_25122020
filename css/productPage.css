@@ -10831,6 +10831,10 @@ img#logo {
   position: unset;
 }
 
+header {
+  position: relative;
+}
+
 #cameraId {
   display: block;
   margin-top: 30px;
@@ -10909,6 +10913,7 @@ button.shopping-bag.btn.btn-primary {
 }
 
 footer {
+  position: absolute;
   width: 100%;
 }
 @media screen and (max-width: 576px) {

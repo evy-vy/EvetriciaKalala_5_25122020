@@ -1,8 +1,8 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
 
 const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
 const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
+const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
 const apiUrlPost = "https://jwdp5.herokuapp.com/api/cameras/order/" // url post
 let cameras = "cameras"; //Choix du Produit à vendre.
 let montantPanier = 0;
@@ -224,7 +224,7 @@ const verifInput = (value, type, element) => {
       break;
     case "address":
       console.log("address");
-      regExp = new RegExp("^[-'a-zA0-9-ZÀ-ÖØ-öø-ÿ ]+$");
+      regExp = new RegExp("^[-'a-zA-Z0-9À-ÖØ-öø-ÿ ]+$");
       break;
   }
   console.log("value: ", value); //verifie la valeur envoyé dans l'input
@@ -288,7 +288,7 @@ function sendOrder(form) {
     .then(response => response.json())
     .then(data => {
       console.log('data :', data); //retour de la requête
-      let commande = encodeURIComponent(JSON.stringify(data)); //permet formter l'objet reçu en réponse en string pour pourvoir le passer dans l'url à envoyer a confirmation.html
+      let commande = encodeURIComponent(JSON.stringify(data)); //permet formater l'objet reçu en réponse en string pour pourvoir le passer dans l'url à envoyer a confirmation.html
       window.location.replace("confirmation.html?commande=" + commande + "&" + "montantCommande=" + montantCommande); //redirection
     })
     .catch(error => { // en cas d'erreur

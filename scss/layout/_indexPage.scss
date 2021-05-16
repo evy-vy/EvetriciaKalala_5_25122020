@@ -13,6 +13,10 @@ img#logo {
   position : unset;
 };
 
+header { 
+  position: relative;
+}
+
 /* cards */
 .list {
   @include cards

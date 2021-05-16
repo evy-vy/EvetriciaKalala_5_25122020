@@ -10804,6 +10804,10 @@ img#logo {
   position: unset;
 }
 
+header {
+  position: relative;
+}
+
 /* cards */
 .list {
   display: flex;

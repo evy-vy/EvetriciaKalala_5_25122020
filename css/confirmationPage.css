@@ -10798,9 +10798,13 @@ img#logo {
   position: unset;
 }
 
+header {
+  position: relative;
+}
+
 .confirmation {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10808,9 +10812,18 @@ img#logo {
 .confirmation__title {
   font-size: 1.8rem;
 }
+@media screen and (max-width: 576px) {
+  .confirmation__title {
+    font-size: 1.1rem;
+  }
+}
 .confirmation__details {
   font-size: 1.3rem;
   font-family: bold;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 footer {
