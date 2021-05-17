@@ -303,6 +303,7 @@ const checkForSubmit = (form) => {
       order[key] = value;
     })
     console.log(order);
+
     let productsList = [];
     let montantCommande = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -314,6 +315,8 @@ const checkForSubmit = (form) => {
       productsList.push(itemsInCart.id);
       montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
     }
+    localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerText);
+
     console.log(montantCommande);
     let post = {
       "contact": {
