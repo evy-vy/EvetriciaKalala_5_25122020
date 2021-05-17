@@ -125,7 +125,7 @@ for (let i = 0; i < localStorage.length; i++) {
   totalPrice.classList.add("totalPrice");
   let prixLigne = (itemsInCart.prix / 100) * itemsInCart.quantite + ',00€';
   totalPrice.innerHTML = prixLigne;
-  console.log('montantpanoer : ', montantPanier);
+  console.log('montantpanier : ', montantPanier);
   console.log('ligne : ', prixLigne);
 
   montantPanier += parseInt(prixLigne);
@@ -247,55 +247,6 @@ const verifInput = (value, type, element) => {
   };
 }
 
-function sendOrder(form) {
-  let order = [];
-  let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans me formulaire et les formtes
-  formData.forEach(function (value, key) { //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
-    order[key] = value;
-  })
-  console.log(order);
-  let productsList = [];
-  let montantCommande = 0;
-  for (let i = 0; i < localStorage.length; i++) {
-    console.log(i);
-    let key = localStorage.key(i);
-    console.log(key, localStorage.getItem(key));
-    let itemsInCart = JSON.parse(localStorage.getItem(key));
-    console.log('articles :', itemsInCart);
-    productsList.push(itemsInCart.id);
-    montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
-  }
-  console.log(montantCommande);
-  let post = {
-    "contact": {
-      "firstName": order.firstName,
-      "lastName": order.lastName,
-      "email": order.email,
-      "address": order.address,
-      "city": order.city
-    },
-    "products": productsList
-  }
-  console.log("post :", post);
-  return fetch(apiUrlPostOriginal, { // ce que j'envoie
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(post)
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log('data :', data); //retour de la requête
-      let commande = encodeURIComponent(JSON.stringify(data)); //permet formater l'objet reçu en réponse en string pour pourvoir le passer dans l'url à envoyer a confirmation.html
-      window.location.replace("confirmation.html?commande=" + commande + "&" + "montantCommande=" + montantCommande); //redirection
-    })
-    .catch(error => { // en cas d'erreur
-      alert(error);
-    })
-};
-
 // fonction qui verifie que les champs sont tous bons pour l'envoi
 
 const checkForSubmit = (form) => {
@@ -344,9 +295,59 @@ const checkForSubmit = (form) => {
       alert("Votre commande à bien été prise en compte !");
     }
   };
+
+  function sendOrder(form) {
+    let order = [];
+    let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans me formulaire et les formates
+    formData.forEach(function (value, key) { //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
+      order[key] = value;
+    })
+    console.log(order);
+    let productsList = [];
+    let montantCommande = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      console.log(i);
+      let key = localStorage.key(i);
+      console.log(key, localStorage.getItem(key));
+      let itemsInCart = JSON.parse(localStorage.getItem(key));
+      console.log('articles :', itemsInCart);
+      productsList.push(itemsInCart.id);
+      montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
+    }
+    console.log(montantCommande);
+    let post = {
+      "contact": {
+        "firstName": order.firstName,
+        "lastName": order.lastName,
+        "email": order.email,
+        "address": order.address,
+        "city": order.city
+      },
+      "products": productsList
+    }
+    console.log("post :", post);
+    console.log("products", productsList);
+
+    fetch(apiUrlPostOriginal, { // ce que j'envoie
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(post)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('data :', data);
+        localStorage.setItem("commandeOK", JSON.stringify(data));
+        console.log(localStorage);
+        window.location = "confirmation.html";
+      })
+      .catch(error => { // en cas d'erreur
+        alert("error");
+      });
+  }
 };
-
-
 /* ^ = désigne le début du text
 * [a-zA-Z0-9.-_] = indique les caractères autorisés (l'alphabet en minuscule et en majuscule, les chiffres de 0 à 9, les caractères point, tiret et underscore).
 * + = on peut en écrire plusieurs.

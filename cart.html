@@ -69,7 +69,7 @@
                   </h1>
                 </div>
                 <div class="container__img">
-                  <img class ="jumbotron__img" src="./images/cameraWithPinkBg.webp">
+                  <img class ="jumbotron__img" src="./images/cameraWithPinkBg.webp" alt="un bras brandissant un appareil photo">
                 </div>
               </div>
             </div>
@@ -83,7 +83,9 @@
           <!-- headings -->
           <div id= "products-container" class=" row col-11 d-flex mx-auto mt-5 pb-3">
             <ul class="products__header">
-              <i class="fas fa-times-circle" id="removeAll"></i>
+              <li>
+                <i class="fas fa-times-circle" id="removeAll"></i>
+              </li>
               <li>
                 <span class="products__title">Article</span>
               </li>
@@ -98,10 +100,10 @@
               </li>
             </ul>
             <!-- liste articles -->
-            <div class="cartItems" id="cartItems">
-            </div>
+            <div class="cartItems" id="cartItems"></div>
             <div id="cartTotalAmountDiv">
               <p class="montantTotal">Montant Total :</p>
+            </div>
           </div>
         </div> 
         <!-- FORM -->
@@ -110,38 +112,39 @@
           <form method="POST" action="js/cart.js" class="col-12" id="inscription">
             <div class="row">
               <div class ="form-group col-10 col-md-6 mb-2">
-                <label for ="lastName">Nom :</label>
-                <input class="form-control" name="lastName"  placeholder="Votre nom" maxlength="20" required>
+                <label for = "lastName" >Nom :</label>
+                <input class="form-control"  id="lastName" name="lastName"  placeholder="Votre nom" maxlength="20" required>
                 <small id="lastNameWarning"></small>
               </div>
               <div class ="form-group col-10 col-md-6 mb-2">
                 <label for ="firstName">Prénom :</label>
-                <input class="form-control" name="firstName" placeholder="Votre prénom" maxlength="20" required>
+                <input class="form-control"  id="firstName" name="firstName" placeholder="Votre prénom" maxlength="20" required>
                 <small id="firstNameWarning"></small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-12 mb-2">
                 <label for="address">Adresse</label>
-                <input type="text" class="form-control" name="address"  placeholder="Votre adresse" required>
+                <input type="text" class="form-control"  id="address" name="address"  placeholder="Votre adresse" required>
                 <small id="addressWarning"></small>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6 mb-2">
                   <label for="city">Ville</label>
-                  <input type="text" class="form-control" name="city"  placeholder="Votre ville" required>
+                  <input type="text" class="form-control" id="city" name="city"  placeholder="Votre ville" required>
                   <small id="cityWarning"></small>
                 </div>
               </div>
               <div class="form-group col-md-6 mb-2">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email"  placeholder="Votre email" required>
+                <input type="email" class="form-control"  id="email" name="email"  placeholder="Votre email" required>
                 <small id="emailWarning"></small>
               </div>
               <div class="form-group">
-                <input type="submit" name="submit" value="Envoyer" class="btn btn-primary checked"></input>
+                <input type="submit" name="submit" value="Envoyer" class="btn btn-primary checked">
                 <small id="submitWarning"></small>
               </div>
+            </div>
           </form>
         </section>
       </main>
@@ -172,11 +175,12 @@
               </ul>
             </div>
           </div>
+        </div>
       </footer>
       <!-- fin footer -->
     </div>
-    <!------------ fin page container ------------>
-<!---------------- Script bootstrap & js --------------->
+    <!-- fin page container -->
+<!-- Script bootstrap & js -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="./Js/cart.js"></script>
