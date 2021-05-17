@@ -331,7 +331,7 @@ const checkForSubmit = (form) => {
     console.log("post :", post);
     console.log("products", productsList);
 
-    fetch(apiUrlPostOriginal, { // ce que j'envoie
+    fetch(apiUrlPost, { // ce que j'envoie
       method: "POST",
       headers: {
         "Accept": "application/json",
