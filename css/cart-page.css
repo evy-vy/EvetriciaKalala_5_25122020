@@ -10728,6 +10728,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.link {
+  background-color: #c0b38d;
+  border-color: #c0b38d;
+  margin-bottom: 0.5rem;
+}
+
 html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin: 0;
   padding: 0;
@@ -10801,7 +10807,7 @@ img#logo {
 .jumboContainer {
   overflow: hidden;
   height: 200px;
-  background-color: #edd3d5;
+  background-color: #f8dee3;
 }
 
 .jumboContainer .row {

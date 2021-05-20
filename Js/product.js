@@ -6,15 +6,21 @@ let cameras = "cameras"; //Choix du Produit à vendre.
 let urlId = ""; // récupération de l"id pour affichage individuel des produits. 
 
 /****************************Page-2**Affichage du produit sélectionné par l"internaute**********************/
+
 //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
-//Récupération de l"URL de la page sur laquelle on se trouve + ajout de l"id produit.
+
+
+//Récupération de l'URL de la page sur laquelle on se trouve + ajout de l"id produit. On accède au éléments de l'url de la page en cours grace a window.location.search
 
 function getId() {
-  let url = window.location.search;
-  let params = new URLSearchParams(url);
-  let id = params.get("id");
+  let url = window.location.search; //renvoie la partie chaine de requête d'une url (tout ce qui vient après ? (? compris. il est utilisé pour le passage de paramètres)).
+  console.log("url :", url);
+  let params = new URLSearchParams(url); //permet de formater des données et de les stocker
+  console.log(params)
+  let id = params.get("id"); //Retourne la première valeur associée au paramètre de recherche donné.
+
   console.log(id);
   return id;
 }
@@ -33,7 +39,7 @@ function selectedUrl(id) {
 //Me permet de récuperer et d"afficher le produit sélectionné selon son id
 async function cameraId() {
   let camera = await selectedUrl(urlId);
-  console.log(camera);
+  // console.log(camera);
   displayCameraById(camera);
 }
 cameraId();
@@ -54,7 +60,7 @@ function getLocalStorageEltById(id, option) {
     return null;
   }
   //affiche le résultat du contenu du localStorage
-  console.log('getLocalStorage');
+  console.log('getLocalStorage :', localStorage);
 
   //boucle permettant de parcourir le localStorage
   for (i = 0; i < localStorage.length; i++) {
@@ -67,12 +73,10 @@ function getLocalStorageEltById(id, option) {
 
       // retourne la clé (key)
       return i;
-
     }
   }
   // sinon l'élément non trouvé = null
   return null;
-
 }
 
 function displayCameraById(camera) {
@@ -82,11 +86,12 @@ function displayCameraById(camera) {
 
   // création d"une liste désordonnée
   let newUl = document.createElement("ul");
-  newUl.classList.add("class", "list", "col-10", "col-sm-9", "col-md-7", "col-lg-6", "col-xl-5");
+  // newUl.classList.add("class", "list", "col-10", "col-sm-9", "col-md-7", "col-lg-6", "col-xl-5");
+  newUl.classList.add("class", "list", "col-10", "col-sm-6", "col-md-5", "col-xl-4", "ms-sm-3", "ms-xl-5", "mb-3");
 
   // création d"une liste
   let newLi = document.createElement("li");
-  newLi.classList.add("list__card", "card", "border-secondary", "text-center", "card-body", "text-black", "lead", "mt-5");
+  newLi.classList.add("list__card", "card", "text-center", "card-body", "text-light", "lead");
 
   /* Dans la liste : */
 
@@ -135,7 +140,7 @@ function displayCameraById(camera) {
   lensesTitle.innerText = "Lentilles :"
 
   /* options (select & options).
-  * Création d"une fonction me permettant dans creer un input select dans lequel je peux lister, grâce à une boucle, les lentilles disponibles pour l"appareil photo selectionné.
+  * Création d"une fonction me permettant de creer un input select dans lequel je peux lister, grâce à une boucle, les lentilles disponibles pour l"appareil photo selectionné.
   */
 
   //création des variables nécessaire à la création de la structure du select input et des options
@@ -166,7 +171,7 @@ function displayCameraById(camera) {
   let btn = document.createElement("button");
   btn.id = "cartBtn";
   btn.setAttribute("type", "button");
-  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-8", "col-sm-5", "col-md-4", "col-md-5", "center", "text-light");
+  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-9", "col-md-7", "center", "text-light");
   btn.innerText = "Ajouter au panier";
 
   //Ajout des articles aux paniers et définition des fonctionnalitées enclanchées au clic
@@ -228,7 +233,6 @@ function displayCameraById(camera) {
       compteur.innerHTML = localStorage.length;
       alert("L'article à bien été ajouté au panier");
     }
-
   });
 
 

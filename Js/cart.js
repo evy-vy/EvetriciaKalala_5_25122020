@@ -96,6 +96,7 @@ for (let i = 0; i < localStorage.length; i++) {
     appareil.quantite = newQuantity; //modifie la quantité de l'appareil.
     console.log('2 :', appareil);
     localStorage.setItem(e.target.dataset.key, JSON.stringify(appareil)); //enregistre le produit modifié dans le localStorage
+
     //calcul du total d'une ligne à la modification des quantités.
     let newTotalLine = appareil.quantite * (appareil.prix / 100);
     total.innerHTML = newTotalLine.toFixed(2) + '€';
@@ -163,6 +164,7 @@ form.email.addEventListener('change', (e) => {
   //je récupère la balise qui me permettra de transmettre un message au client selon que la valeur saisie dans l'evenement cible est bon ou mauvais en fonction du type que l'on attend.
   let element = document.getElementById("emailWarning");
   verifInput(e.target.value, "email", element);
+  // console.log(form.email); //test
 });
 
 form.lastName.addEventListener('change', (e) => {
@@ -185,13 +187,7 @@ form.city.addEventListener('change', (e) => {
   verifInput(e.target.value, "string", element);
 });
 
-//Soumission du formulaire. On met l'écouteur d'évènement directement sur le form et on écoute l'évènement.
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
 
-  checkForSubmit(e.target); //On envoi le form pour récupérer les champs
-});
 
 /************************** Validation FORM******************************/
 
@@ -204,9 +200,7 @@ const verifInput = (value, type, element) => {
   let regExp;
 
   //on vérifie que les champs soient bien remplis et qu'aucun espace ou tab etc seul ne soit accepté comme valeur valide.
-  // if (localStorage.length === 0) {
-  //   console.log("vide");
-  //   alert("Pensez à remplir votre panier avant de passer commande!");
+
   if (value.trim() === "") {//
     element.innerHTML = "Données non valides";
     element.classList.remove("text-success");
@@ -227,6 +221,8 @@ const verifInput = (value, type, element) => {
       regExp = new RegExp("^[-'a-zA-Z0-9À-ÖØ-öø-ÿ ]+$");
       break;
   }
+  console.log("regex", regExp);
+  console.log("type :", type);
   console.log("value: ", value); //verifie la valeur envoyé dans l'input
   if (regExp.test(value)) {
     console.log("ok");
@@ -246,6 +242,14 @@ const verifInput = (value, type, element) => {
     return false;
   };
 }
+
+//Soumission du formulaire. On met l'écouteur d'évènement directement sur le form et on écoute l'évènement.
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  checkForSubmit(e.target); //On envoi le form pour récupérer les champs
+});
 
 // fonction qui verifie que les champs sont tous bons pour l'envoi
 
@@ -273,12 +277,14 @@ const checkForSubmit = (form) => {
     }
   ];
 
+
   let isValid = false;
 
   fields.forEach((item) => {
     //on parcours notre tableaux de champs, et on execute notre fonction de vérification
     isValid = verifInput(item["value"], item["type"]);
     if (!isValid) { //si isValid est false on sort de la boucle
+      // alert("c'est pas boooon on recommence"); //test
       return false
     }
   })
@@ -298,14 +304,14 @@ const checkForSubmit = (form) => {
 
   function sendOrder(form) {
     let order = [];
-    let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans me formulaire et les formates
+    let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans le formulaire et les formates
     formData.forEach(function (value, key) { //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
       order[key] = value;
     })
     console.log(order);
 
     let productsList = [];
-    let montantCommande = 0;
+    // let montantCommande = 0;
     for (let i = 0; i < localStorage.length; i++) {
       console.log(i);
       let key = localStorage.key(i);
@@ -313,11 +319,11 @@ const checkForSubmit = (form) => {
       let itemsInCart = JSON.parse(localStorage.getItem(key));
       console.log('articles :', itemsInCart);
       productsList.push(itemsInCart.id);
-      montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
+      // montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
     }
     localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerText);
 
-    console.log(montantCommande);
+    // console.log(montantCommande);
     let post = {
       "contact": {
         "firstName": order.firstName,

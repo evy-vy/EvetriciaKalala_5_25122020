@@ -10728,6 +10728,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.link {
+  background-color: #c0b38d;
+  border-color: #c0b38d;
+  margin-bottom: 0.5rem;
+}
+
 html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin: 0;
   padding: 0;
@@ -10794,6 +10800,7 @@ body {
   background: url("../images/vintageCameraBg.webp") no-repeat fixed;
   background-size: cover;
   background-color: #ebebeb;
+  background-position: center;
 }
 
 img#logo {
@@ -10815,7 +10822,8 @@ header {
 .list__card {
   width: 200px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: solid 2px #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10833,7 +10841,7 @@ header {
 }
 .list__price {
   align-self: start;
-  color: lightcoral;
+  color: #f8d779;
   font-weight: bold;
 }
 .list__btn {

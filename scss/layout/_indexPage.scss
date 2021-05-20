@@ -2,6 +2,7 @@ body {
   background: url("../images/vintageCameraBg.webp") no-repeat fixed;
   background-size: cover;
   background-color: #ebebeb;
+  background-position: center;
 }
 
 img#logo {
@@ -21,6 +22,7 @@ header {
 .list {
   @include cards
 }
+
 
  footer {
   position: absolute;

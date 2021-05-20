@@ -10728,6 +10728,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.link {
+  background-color: #c0b38d;
+  border-color: #c0b38d;
+  margin-bottom: 0.5rem;
+}
+
 html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin: 0;
   padding: 0;
@@ -10791,36 +10797,9 @@ td:not([align]), th:not([align]) {
 }
 
 body {
-  background: url("../images/womanTakingPix.webp") no-repeat fixed;
+  background: url("../images/photosPatschwork.webp  ") no-repeat fixed;
   background-size: cover;
-  background-color: #ebebeb;
-  background-position: 320px -120px;
-}
-@media screen and (max-width: 576px) {
-  body {
-    background: none;
-    background-color: #ebebeb;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  body {
-    background-position: -0.3rem -3rem;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  body {
-    background-position: -0.3rem -3rem;
-  }
-}
-@media screen and (min-width: 993px) {
-  body {
-    background-position: 10rem -3rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  body {
-    background-position: 15rem -3rem;
-  }
+  background-position: center;
 }
 
 img#logo {
@@ -10837,7 +10816,7 @@ header {
 
 #cameraId {
   display: block;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .row {
@@ -10846,7 +10825,6 @@ header {
 }
 @media screen and (max-width: 576px) {
   .row {
-    justify-content: center;
     margin-left: 0;
   }
 }
@@ -10857,7 +10835,8 @@ header {
 .list__card {
   width: 200px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: solid 2px #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10875,7 +10854,7 @@ header {
 }
 .list__price {
   align-self: start;
-  color: lightcoral;
+  color: #f8d779;
   font-weight: bold;
 }
 .list__btn {
@@ -10885,13 +10864,9 @@ header {
 }
 
 .containerChoice {
+  flex-direction: column;
+  align-items: baseline;
   display: inline-block;
-  justify-content: space-evenly;
-}
-@media screen and (max-width: 576px) {
-  .containerChoice {
-    justify-content: start;
-  }
 }
 
 select#selectOptions {

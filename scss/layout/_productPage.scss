@@ -1,24 +1,23 @@
 body {
-  background: url("../images/womanTakingPix.webp") no-repeat fixed;
+  background: url("../images/photosPatschwork.webp  ") no-repeat fixed;
   background-size: cover;
-  background-color: #ebebeb;
-  background-position: 320px -120px;
-  @include small-mobile{
-    background: none;
-    background-color: #ebebeb;
-  }
-  @include mobile {
-    background-position: -0.3rem -3rem;
-  }
-  @include tablette {
-    background-position: -0.3rem -3rem;
-  }
-  @include desktop {
-    background-position: 10rem -3rem;
-  }
-  @include big-desktop {
-    background-position: 15rem -3rem;
-  }
+  // background-color: #ebebeb;
+  background-position: center ;
+  // @include small-mobile{
+    // background-position: center -2rem ;
+  // }
+  // @include mobile {
+  //   background-position: -0.3rem -3rem;
+  // }
+  // @include tablette {
+  //   background-position: -0.3rem -3rem;
+  // }
+  // @include desktop {
+  //   background-position: 10rem -3rem;
+  // }
+  // @include big-desktop {
+  //   background-position: 15rem -3rem;
+  // }
 }
 
 img#logo {
@@ -36,14 +35,14 @@ header {
 
 #cameraId {
   display: block;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .row {
   justify-content: start;
   margin-left: 20px;
   @include small-mobile {
-    justify-content: center;
+    // justify-content: center;
     margin-left: 0;
   }
 }
@@ -53,11 +52,13 @@ header {
 }
 
 .containerChoice {
+  flex-direction: column;
+  align-items: baseline;
   display: inline-block;
-  justify-content: space-evenly;
-  @include small-mobile {
-    justify-content: start;
-  }
+  // justify-content: space-around;
+  // @include small-mobile {
+  //   justify-content: start;
+  // }
 }
 
 select#selectOptions {

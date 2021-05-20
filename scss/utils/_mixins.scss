@@ -5,7 +5,9 @@
     &__card {
     width: 200px;
     height: auto; 
-    background-color: rgba(255, 255, 255, 0.7);
+    // background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: solid 2px #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +25,8 @@
     }  
     &__price {    
     align-self: start;
-    color: lightcoral;
+    // color: lightcoral;
+    color: #f8d779;
     font-weight: bold;
     }
     &__btn {
@@ -32,6 +35,13 @@
       margin-bottom: 0.5rem;
     }
 }
+
+.link {
+  background-color: #c0b38d;
+  border-color: #c0b38d;
+  margin-bottom: 0.5rem;
+}
+
 
 @mixin basket-page {
   margin: 100px auto;
