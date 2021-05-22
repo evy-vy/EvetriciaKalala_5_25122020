@@ -9,7 +9,7 @@ let greeting = document.getElementById("greeting");
 greeting.innerHTML = "Bonjour " + result.contact.firstName + " " + result.contact.lastName + ", " + " Oripix vous remercie pour votre commande."
 
 let purchaseId = document.getElementById("purchaseId"); //intégrer le prix dans le html 
-purchaseId.innerHTML = "Commande N° : " + result.orderId;
+purchaseId.innerHTML = "<span> Commande N° :</span> " + result.orderId;
 totalPurchase.innerHTML = commandeTotal
 
 

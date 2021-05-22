@@ -4,13 +4,18 @@ const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
 const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
 let cameras; //Choix du Produit à vendre.
 
-/*******************************Page-1**Affichage de l"enssemble des produits*******************************/
+
+/*******************************Page-1**Affichage de l"ensemble des produits*******************************/
+
+
 //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
+
+
 /***********************************Récupération des éléments dans l"api***********************************/
 
-/* La méthode fetch, qui utilise des promesses, permet de faire des requête réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. Cependant, il retourne une promesse non résolu que l'on recupère dans la fonction suivante*/
+/* La méthode fetch, qui utilise des promesses, permet de faire des requêtes réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. Cependant, il retourne une promesse non résolu que l'on recupère dans la fonction suivante*/
 
 function getArticles() {
   return fetch(apiUrlRescue)
@@ -25,7 +30,7 @@ function getArticles() {
 /*  
 fonction asynchrone qui stock dans la variable "cameras" la fonction precédente qui contient la promesse retournée. 
 * Await qui ne peut qu'être exécucté dans des fonctions asynchrone,permet d'attendre les données. d'attendre que la promesse soit résolue.
-* On boucle ensuite dans ces données pour récuperer chaque objet présent dans le tableau de donnée. Le résultat est stocké dans la fonction displayArticles.
+* On boucle ensuite dans ces données pour récuperer chaque objet présent dans le tableau de donnée renvoyé par l'API. Le résultat est stocké dans la fonction displayArticles.
 */
 async function camerasContainer() {
   cameras = await getArticles();
@@ -43,7 +48,7 @@ camerasContainer();
 //Affichage des données stockées dans displayArticle, dans le html récupéré
 function displayArticles(camera) {
   // console.log(camera); /*test*/
-  //création d"une ligne
+  //création d'une div
   let newDiv = document.createElement("div");
   newDiv.classList.add("row");
 
@@ -73,23 +78,11 @@ function displayArticles(camera) {
   paragraph.classList.add("list__description", "mt-3", "mb-3", "lead");
   paragraph.innerText = camera.description;
 
-  // du button "en savoir plus"
-  // let btn = document.createElement("button");
-  // btn.id = "cardBtn";
-  // btn.setAttribute("type", "button");
-  // btn.classList.add("list__btn", "btn", "col-7", "col-sm-5", "col-md-4", "col-md-5", "center");
-  // let btn = document.createElement("a");
-  // btn.id = "cardBtn";
-  // btn.setAttribute("type", "button");
-  // btn.classList.add("list__btn", "btn", "col-7", "col-sm-5", "col-md-4", "col-lg-5", "center");
-
-
-  // lien du bouton, vers la page produit
+  // lien vers la page produit
   let link = document.createElement("a");
   link.id = "cardBtn";
   link.href = "product.html?id=" + camera._id;
   link.setAttribute("role", "button");
-  // link.classList.add("mb-1", "text-light", "btn", "list__btn");
   link.classList.add("list__btn", "btn", "center", "text-light", "mb-1", "col-11", "col-sm-8", "col-md-7", "col-lg-6", "col-xl-5");
 
   link.innerText = "En savoir plus";
@@ -98,7 +91,6 @@ function displayArticles(camera) {
   newDiv.append(newUl);
   newUl.append(newLi);
   newLi.append(title, image, paragraph, link);
-  // btn.append(link);
   document.getElementById("camerasContainer").append(newDiv);
 }
 /************************************************Fin page-1************************************************/

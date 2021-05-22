@@ -10833,6 +10833,110 @@ img#logo {
   width: 35%;
 }
 
+.tableau-panier {
+  margin: 5px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article {
+  margin-left: 55px;
+}
+@media screen and (max-width: 576px) {
+  .article {
+    margin-left: 10px;
+  }
+}
+
+.allLine {
+  border-bottom: solid 2px #f8f9fa;
+}
+
+th {
+  text-align: left;
+  padding: 5px;
+  color: #000;
+  background: #f8f9fa;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px 5px;
+}
+
+td input {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+
+td img {
+  width: 50%;
+  height: auto;
+  margin: 0 5px;
+  object-fit: cover;
+}
+@media screen and (max-width: 576px) {
+  td img {
+    margin: 0 10px;
+  }
+}
+
+.imgNamePrice {
+  width: 50%;
+  height: auto;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.namePrice {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 85px;
+}
+@media screen and (max-width: 576px) {
+  .namePrice {
+    margin-left: 25px;
+  }
+}
+
+.montantTotal {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+.totalTableDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.totalTable {
+  border-top: 3px dashed #f8dee3;
+  width: 100%;
+  max-width: 400px;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+th:last-child {
+  text-align: right;
+}
+
 .container__img {
   width: 50%;
   display: flex;
@@ -10844,23 +10948,22 @@ img#logo {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.products-container {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  margin-top: 50px;
+#products-container {
+  border: solid 5px #f8f9fa;
 }
 
 #removeAll,
 .fas.fa-times-circle {
-  display: flex;
-  align-items: center;
   color: blue;
   cursor: pointer;
-  margin-left: -15px;
+}
+#removeAll:hover,
+.fas.fa-times-circle:hover {
+  color: red;
 }
 
 .fas.fa-chevron-circle-left,
@@ -10869,75 +10972,9 @@ img#logo {
   cursor: pointer;
 }
 
-.cartItems {
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-}
-
-.listContainer {
-  border-bottom: 2px solid lightgrey;
-}
-
-.products__header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 4px solid lightgrey;
-  font-weight: bold;
-}
-.products__price {
-  display: flex;
-  margin-right: 15px;
-}
-.products__total {
-  display: flex;
-}
-.products__quantity {
-  display: flex;
-}
-.products__list {
-  display: flex;
-}
-
-.itemImg {
-  width: 12%;
-  object-fit: cover;
-  margin-left: -15px;
-}
-@media screen and (max-width: 576px) {
-  .itemImg {
-    margin-left: 5px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .imgName {
-    width: 40px;
-  }
-}
-
-.input {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.quantityInput {
-  font-size: 10px;
-}
-@media screen and (max-width: 576px) {
-  .quantityInput {
-    width: 30px;
-    text-align: center;
-  }
-}
-
 #cartTotalAmountDiv {
-  border-bottom: 4px solid lightgrey;
-  padding: 3px;
   display: flex;
   justify-content: flex-end;
-  font-weight: bold;
 }
 
 /********************FORM*******************/

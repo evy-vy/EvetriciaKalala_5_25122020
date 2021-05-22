@@ -12,95 +12,123 @@ let montantPanier = 0;
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
 
+
 /***************récupération des articles dans le localStorage**************/
 
-//boucle me permettant de récuperer les articles présent dans le local storage ainsi que l'ensemble des informations lié à chaque article grace a la clé et de les afficher dans la console
+//fonction qui permet de 
+const supprimer = clé => {
+  //ajout d'une icone delete pour chaque article ajouté au panier
+  let deleteIcon = document.createElement("i");
+  deleteIcon.setAttribute("class", "fas fa-times-circle");
+  deleteIcon.classList.add("col-1");
+  deleteIcon.dataset.key = clé; //la clé est l'identifiant de l'appareil sur lequel on se trouve dans le localStorage
+  console.log(deleteIcon);
+  return deleteIcon;
+}
+
+//cette boucle me permettant de récuperer les articles présent dans le localstorage ainsi que l'ensemble des informations lié à chaque article grace à leur clé et de les afficher dans la console
 for (let i = 0; i < localStorage.length; i++) {
   console.log(i);
+
   let key = localStorage.key(i);
   console.log(key, localStorage.getItem(key));
   let itemsInCart = JSON.parse(localStorage.getItem(key));
   console.log('articles :', itemsInCart);
 
-  //création de la ul recevant les articles
-  let cartItemUl = document.createElement("ul");
-  cartItemUl.classList.add("listContainer");
+  //création du tableau recevant les articles
+  let tbody = document.createElement("tbody");
+  tbody.classList.add("tableBody");
 
-  //création de la div recevant les articles
-  let cartItemList = document.createElement("li");
-  cartItemList.classList.add("products__list");
+  //création d'une ligne
+  let tableRow = document.createElement("tr");
+  tableRow.classList.add("allLine");
+  tbody.append(tableRow);
 
-  //ajout d'une icone
-  let deleteIcon = document.createElement("i");
-  deleteIcon.setAttribute("class", "fas fa-times-circle");
-  deleteIcon.classList.add("col-1");
-  deleteIcon.dataset.key = i;
+  //création de la ligne de données
+  let tableData = document.createElement("td");
+  tableData.classList.add("imgNamePrice");
 
-  deleteIcon.addEventListener("click", (e) => {
+  //création d'une div
+  let tableDiv = document.createElement("div");
+  tableDiv.classList.add("cart-info");
+  tableData.append(tableDiv);
+
+  //je stock le retour de ma fonction "supprimer" pour pouvoir la rappeler. i est la clé d'un appareil bouclé dans le localstorage
+  let iconSupprimer = supprimer(i);
+
+  //On écoute le clic sur l'icone supprimer
+  iconSupprimer.addEventListener("click", (e) => {
     let key = e.target.dataset.key;
     localStorage.removeItem(key);
     document.location.reload();
   });
 
-  //création ajout de l'imageURL
-  let itemImg = document.createElement("img");
-  itemImg.setAttribute("src", itemsInCart.url);
-  itemImg.classList.add("itemImg", "col-1");
+  //création de l'image
+  let tableImg = document.createElement("img");
+  tableImg.setAttribute("src", itemsInCart.url);
+  tableImg.classList.add("itemImg");
+  tableImg.setAttribute("alt", "appareil photo " + itemsInCart.nom);
 
-  //création d'un span contenant le nom de l'objet
-  let itemName = document.createElement("span");
-  itemName.classList.add("itemName", "col-2");
-  itemName.innerHTML = itemsInCart.nom;
+  //création d'une div
+  let tableDivName = document.createElement("div");
+  tableDivName.classList.add("namePrice");
 
-  //création d'un span qui contiendra le span prix
-  // let itemPrice = document.createElement("div");
-  // itemPrice.classList.add("price", "col-2");
-  let itemPrice = document.createElement("span");
-  itemPrice.classList.add("price", "col-3");
 
-  //création du span prix 
-  let price = document.createElement("span");
-  price.classList.add("price");
-  price.innerHTML = itemsInCart.prix / 100 + ',00€';
+  //création d'un paragraphe contenant le nom de l'objet
+  let tableParagraph = document.createElement("p");
+  tableParagraph.classList.add("itemName");
+  tableParagraph.innerHTML = itemsInCart.nom + "<br><br>";
 
-  //création de la span qui recevra les quantités
-  // let itemQuantity = document.createElement("div");
-  // itemQuantity.classList.add("quantity", "col-3");
-  let itemQuantity = document.createElement("span");
-  itemQuantity.classList.add("input", "col-3");
+  const itemOption = document.createElement("small");
+  itemOption.classList.add("lense");
+  itemOption.innerHTML = "<strong> Lentille : </strong>" + itemsInCart.option;
 
-  //insertion d'une icone
-  let quantityCursorLeft = document.createElement("i");
-  quantityCursorLeft.setAttribute("class", "fas fa-chevron-circle-left");
+  //création d'un small contenant le prix de l'objet
+  let itemPrice = document.createElement("small");
+  itemPrice.classList.add("price");
 
-  //ajout de l'input quantité
-  let quantityInput = document.createElement("input");
-  quantityInput.classList.add("quantityInput");
-  quantityInput.setAttribute("type", "number");
-  quantityInput.setAttribute("name", "quantity");
-  quantityInput.setAttribute("value", itemsInCart.quantite);
-  quantityInput.setAttribute("min", "1");
-  quantityInput.setAttribute("max", "5");
-  quantityInput.dataset.key = i; //clé du localeStorage qui permet de retrouver l'appareil sur lequel on se trouve. On l'identifie via sa clé (key) dans le localStorage.
+  let price = itemsInCart.prix / 100;
+  itemPrice.innerHTML = "<strong> Prix : </strong> " + price.toFixed(2) + "€";
 
-  // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
-  quantityInput.addEventListener('change', (e) => {
+
+  tableDivName.append(tableParagraph, itemOption, itemPrice);
+
+  //création de la ligne de données pour l'input
+  let tableDataInput = document.createElement("td");
+  tableDataInput.classList.add("dataInput");
+
+  //création de l'input quantité
+  const quantityField = quantityKey => {
+    let quantityInput = document.createElement("input");
+    // quantityInput.classList.add("quantityInput");
+    quantityInput.setAttribute("type", "number");
+    quantityInput.setAttribute("name", "quantity");
+    quantityInput.setAttribute("value", itemsInCart.quantite);
+    quantityInput.setAttribute("min", "1");
+    quantityInput.setAttribute("max", "5");
+    quantityInput.dataset.key = quantityKey; //clé du localeStorage qui permet de retrouver l'appareil sur lequel on se trouve. On l'identifie via sa clé (key) dans le localStorage.
+    console.log(quantityInput);
+    return quantityInput;
+  }
+
+  let quantityChoice = quantityField(i);
+
+  // // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
+  quantityChoice.addEventListener('change', (e) => {
 
     //permet d'identifier l'input sur lequel on clic
-    console.log('change :', e.target.dataset.key);//key correspond a la clé du localStorage correpondant au produit qu'on modifie
+    console.log('change :', e.target.dataset.key); //key correspond a la clé du localStorage correpondant au produit qu'on modifie
     console.log(e.target.value);
     let newQuantity = e.target.value; //récupère la valeur de l'input
-    let appareil = JSON.parse(localStorage.getItem(e.target.dataset.key));
-    //récupèration de l'appareil
+    let appareil = JSON.parse(localStorage.getItem(e.target.dataset.key)); //récupèration de l'appareil
     console.log('1 :', appareil);
     appareil.quantite = newQuantity; //modifie la quantité de l'appareil.
     console.log('2 :', appareil);
     localStorage.setItem(e.target.dataset.key, JSON.stringify(appareil)); //enregistre le produit modifié dans le localStorage
-
-    //calcul du total d'une ligne à la modification des quantités.
     let newTotalLine = appareil.quantite * (appareil.prix / 100);
-    total.innerHTML = newTotalLine.toFixed(2) + '€';
+    dataTotalLigne.innerHTML = newTotalLine.toFixed(2) + '€';
     console.log(newTotalLine);
+
 
     //calcul du montant total du panier
     let newMontantPanier = 0;
@@ -112,36 +140,29 @@ for (let i = 0; i < localStorage.length; i++) {
       newMontantPanier += (appareil.prix / 100) * appareil.quantite;
     }
     console.log('total panier', newMontantPanier);
-    totalArea.innerHTML = newMontantPanier.toFixed(2) + '€';
+    totalArea.innerHTML = "<strong> Montant total </strong> :  " + newMontantPanier.toFixed(2) + '€';
   })
 
-  let quantityCursorRight = document.createElement("i");
-  quantityCursorRight.setAttribute("class", "fas fa-chevron-circle-right");
-
-  let total = document.createElement("span");
-  total.classList.add("totalLigne", "col-2");
+  //creation d'un td
+  let dataTotalLigne = document.createElement("td");
+  dataTotalLigne.classList.add("totalLigne");
   itemPrice.classList.add("total");
-
-  let totalPrice = document.createElement("span");
-  totalPrice.classList.add("totalPrice");
-  let prixLigne = (itemsInCart.prix / 100) * itemsInCart.quantite + ',00€';
-  totalPrice.innerHTML = prixLigne;
+  let prixLigne = (itemsInCart.prix / 100) * itemsInCart.quantite;
+  dataTotalLigne.innerHTML = prixLigne.toFixed(2) + "€";
   console.log('montantpanier : ', montantPanier);
   console.log('ligne : ', prixLigne);
 
+  // calcul la somme de la ligne
   montantPanier += parseInt(prixLigne);
   console.log('total : ', montantPanier.toFixed(2) + '€');
 
   let totalArea = document.getElementById("cartTotalAmountDiv");
-  totalArea.innerHTML = "Montant total : " + montantPanier.toFixed(2) + '€';
+  totalArea.innerHTML = "<strong>Montant total </strong> : " + montantPanier.toFixed(2) + '€';
 
-  document.getElementById('cartItems').append(cartItemUl, itemPrice)
-  cartItemUl.append(cartItemList);
-  cartItemList.append(deleteIcon, itemImg, itemName, itemPrice, itemQuantity, total);
-  itemPrice.append(price);
-  itemQuantity.append(quantityCursorLeft, quantityInput, quantityCursorRight);
-  total.append(totalPrice);
-
+  document.getElementById("table").append(tbody)
+  tableDiv.append(iconSupprimer, tableImg, tableDivName);
+  tableRow.append(tableData, tableDataInput, dataTotalLigne);
+  tableDataInput.append(quantityChoice);
 }
 
 //permet de supprimer le contenu entier du panier
@@ -150,7 +171,6 @@ removeAll.addEventListener("click", (e) => {
   localStorage.clear();
   document.location.reload();
 });
-
 
 /*************************************FORM**********************************/
 
@@ -321,7 +341,7 @@ const checkForSubmit = (form) => {
       productsList.push(itemsInCart.id);
       // montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
     }
-    localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerText);
+    localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerHTML);
 
     // console.log(montantCommande);
     let post = {
@@ -353,7 +373,7 @@ const checkForSubmit = (form) => {
         window.location = "confirmation.html";
       })
       .catch(error => { // en cas d'erreur
-        alert("error");
+        alert(error);
       });
   }
 };

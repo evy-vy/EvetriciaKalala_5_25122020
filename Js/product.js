@@ -14,12 +14,14 @@ compteur.innerHTML = localStorage.length;
 
 //Récupération de l'URL de la page sur laquelle on se trouve + ajout de l"id produit. On accède au éléments de l'url de la page en cours grace a window.location.search
 
+
+
 function getId() {
-  let url = window.location.search; //renvoie la partie chaine de requête d'une url (tout ce qui vient après ? (? compris. il est utilisé pour le passage de paramètres)).
+  const url = window.location.search; //renvoie la partie chaine de requête d'une url (tout ce qui vient après ? (? compris. il est utilisé pour le passage de paramètres)).
   console.log("url :", url);
-  let params = new URLSearchParams(url); //permet de formater des données et de les stocker
+  let params = new URLSearchParams(url); //constructeur qui permet d'extraire l'id
   console.log(params)
-  let id = params.get("id"); //Retourne la première valeur associée au paramètre de recherche donné.
+  let id = params.get("id"); //méthode get qui retourne la première valeur associée au paramètre de recherche donné.
 
   console.log(id);
   return id;
@@ -79,6 +81,8 @@ function getLocalStorageEltById(id, option) {
   return null;
 }
 
+//fonction qui affiche les élément dans le html
+
 function displayCameraById(camera) {
   // création d"une ligne
   let newDiv = document.createElement("div");
@@ -86,8 +90,7 @@ function displayCameraById(camera) {
 
   // création d"une liste désordonnée
   let newUl = document.createElement("ul");
-  // newUl.classList.add("class", "list", "col-10", "col-sm-9", "col-md-7", "col-lg-6", "col-xl-5");
-  newUl.classList.add("class", "list", "col-10", "col-sm-6", "col-md-5", "col-xl-4", "ms-sm-3", "ms-xl-5", "mb-3");
+  newUl.classList.add("class", "list", "col-8", "col-sm-6", "col-md-5", "col-xl-4", "ms-sm-3", "ms-md-1", "ms-xl-5", "mb-3");
 
   // création d"une liste
   let newLi = document.createElement("li");
@@ -171,7 +174,7 @@ function displayCameraById(camera) {
   let btn = document.createElement("button");
   btn.id = "cartBtn";
   btn.setAttribute("type", "button");
-  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-9", "col-md-7", "center", "text-light");
+  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-10", "col-md-7", "center", "text-light");
   btn.innerText = "Ajouter au panier";
 
   //Ajout des articles aux paniers et définition des fonctionnalitées enclanchées au clic

@@ -7,36 +7,20 @@ img#logo {
 };
 
 .jumboContainer {
-  // position: relative;
   overflow: hidden;
   height: 200px;
   background-color: #f8dee3;
 }
 
 .jumboContainer .row {
-  // width: 100%;
   height: 200px;
-  // background-color: blue;
   overflow: hidden;
 }
 
 .jumbotron {
-  // width: auto;
   height: 200px;
   display: flex;
-  // justify-content: flex-start;
-  // align-items: center;
-  overflow: hidden;
-  // background: url("../images/cameraWithPinkBg.webp") no-repeat fixed;
-  // background-size: cover;
-  // background-position: -155px -214px;
-  // margin-top: 20px;
-  // &__img {
-    // object-fit: cover;
-    // object-position: -2.3rem -5.5rem;
-    // justify-content: space-around;
-    // align-items: center;
-  
+  overflow: hidden;  
   &__title {
     display: flex;
     justify-content: space-around;
@@ -48,7 +32,97 @@ img#logo {
   display: flex;
   align-items: center;
   width: 35%;
-  // height: 200px;
+}
+
+.tableau-panier {
+  margin: 5px auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cart-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article {
+  margin-left: 55px;
+  @include small-mobile {
+    margin-left: 10px;
+  }
+}
+
+.allLine {
+  border-bottom: solid 2px #f8f9fa;
+}
+
+th {
+  text-align: left;
+  padding: 5px;
+  color: #000;
+  background: #f8f9fa;
+  font-weight: bold;
+}
+td {
+  padding: 10px 5px;
+}
+
+td input {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+td img {
+  width: 50%;
+  height: auto;
+  margin: 0 5px;
+  object-fit: cover;
+  @include small-mobile {
+    margin: 0 10px;
+  }
+}
+
+.imgNamePrice {
+  width: 50%;
+  height: auto;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.namePrice {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 85px;
+  @include small-mobile {
+    margin-left: 25px;
+  }
+}
+
+.montantTotal {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+.totalTableDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.totalTable{
+ border-top: 3px dashed #f8dee3;
+ width: 100%;
+ max-width: 400px;
+}
+td:last-child{
+  text-align: right;
+}
+th:last-child{
+  text-align: right;
 }
 
 .container__img {
@@ -62,24 +136,21 @@ img#logo {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  // margin-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.products-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 50px;
-  }
+#products-container {
+      border: solid 5px #f8f9fa;
+}
   
   #removeAll,
   .fas.fa-times-circle {
-    display: flex;
-    align-items: center;
     color: blue;
     cursor: pointer;
-    margin-left: -15px;
+    &:hover {
+      color: red;
+    }
   }
 
   .fas.fa-chevron-circle-left,
@@ -88,75 +159,11 @@ img#logo {
     cursor: pointer;
   }
 
-.cartItems {
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-}
-
-.listContainer {
-  border-bottom: 2px solid lightgrey;
-}
-.products {
-  &__header { 
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 4px solid lightgrey;
-  font-weight: bold;
-}
-  // &__title {
-  // width: 45%;
-  // } 
-  &__price {
-  display: flex;
-  margin-right: 15px;
-  }
-  &__total {
-  display: flex;
-  }
-  &__quantity {
-  display: flex;
-  }
-  &__list {
-    display: flex;
-  }
-}
-  
-  .itemImg {
-    width: 12%;
-    object-fit: cover;
-    margin-left: -15px;
-    @include small-mobile {
-      margin-left: 5px;
-    }
-  }
-
-  .imgName {
-    @include small-mobile {
-      width: 40px;
-  }
-}
-
-.input {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.quantityInput {
-  font-size: 10px;
-  @include small-mobile {
-    width: 30px;
-    text-align: center;
-  }
-}
 
 #cartTotalAmountDiv {
-  border-bottom: 4px solid lightgrey;
-  padding: 3px;
   display: flex;
   justify-content: flex-end;
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 /********************FORM*******************/

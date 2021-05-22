@@ -3,9 +3,7 @@ img#logo {
   width: 60%;
 }
 
-
-.fixed-top
-/* .fixed-bottom*/ {
+.fixed-top {
   position : unset;
 };
 
@@ -28,8 +26,16 @@ header {
   &__details {
     font-size: 1.3rem;
     font-family: bold;
+    border-bottom: 2px dashed #f8dee3;
+  }
+  span {
+    font-weight: bold;
   }
 } 
+
+.thanks {
+  border-bottom: dashed 2px #f8dee3;
+}
 
 .bold {
   font-weight: bold;

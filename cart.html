@@ -81,28 +81,64 @@
 
         <div class="products-mainContainer container-expand">
           <!-- headings -->
-          <div id= "products-container" class=" row col-11 d-flex mx-auto mt-5 pb-3">
-            <ul class="products__header">
-              <li>
+          <div id = "products-container" class=" row col-11 d-flex mx-auto mt-4 ">
+            <!-- <ul class="products__header--ul">
+              <li class="products__header">
                 <i class="fas fa-times-circle" id="removeAll"></i>
-              </li>
-              <li>
                 <span class="products__title">Article</span>
-              </li>
-              <li>
                 <span class="products__price">Prix</span>
-              </li>
-              <li>
                 <span class="products__quantity">Quantité</span>
-              </li>
-              <li>
                 <span class="products__total">Total</span>
               </li>
-            </ul>
+              <li class="test">
+                <i class="fas fa-times-circle"></i>
+                <img src="./images/appareil.b&w.webp"  class="itemImg">
+                <span class= "itemName">Zurss S50</span>
+                <span class="price">500,00€</span>
+                <span><input type="number" name="quantity" value="itemsInCart.quantite" min="1" max="5"></span>
+                <span class="totalLigne">500,00€</span>
+              </li>
+            </ul> -->
+
+
+            <table id = "table" class="tableau-panier">
+              <thead>  
+                <tr>
+                  <th class="products__title">
+                    <i class="fas fa-times-circle" id="removeAll"></i>
+                    <span class="article">Article</span>
+                  </th>
+                  <!-- <th class="products__price">Prix</th> -->
+                  <th class="products__quantity">Quantité</th>
+                  <th class="products__total">Total</th>
+                </tr>
+              </thead>
+              <!-- <tbody id = tableBody>
+                <tr class="allLine">
+                  <td class="imgNamePrice">
+                    <div class="cart-info">
+                      <i class="fas fa-times-circle"></i>
+                      <img src="./images/appareil.b&w.webp" alt="image" class="itemImg">
+                      <div class="namePrice">
+                        <p class= "itemName">Zurss S50</p>-->
+                        <!--<small class="price">500,00€</small>
+                      </div>
+                    </div>
+                  <td class= "dataInput ">
+                    <input type="number" name="quantity" value="itemsInCart.quantite" min="1" max="5">
+                  </td>
+                  <td class="totalLigne">500,00€</td>
+                </tr>
+                
+              </tbody>
+            </table> -->
             <!-- liste articles -->
-            <div class="cartItems" id="cartItems"></div>
-            <div id="cartTotalAmountDiv">
-              <p class="montantTotal">Montant Total :</p>
+            <div class="totalTableDiv">
+              <table class="totalTable">
+                <tr class = "montantFinalPanier">
+                  <td id="cartTotalAmountDiv"></td>
+                </tr> 
+             </table>
             </div>
           </div>
         </div> 
