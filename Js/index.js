@@ -1,7 +1,7 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
 
-const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
+// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
+// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
 let cameras; //Choix du Produit à vendre.
 
 
@@ -18,7 +18,7 @@ compteur.innerHTML = localStorage.length;
 /* La méthode fetch, qui utilise des promesses, permet de faire des requêtes réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. Cependant, il retourne une promesse non résolu que l'on recupère dans la fonction suivante*/
 
 function getArticles() {
-  return fetch(apiUrlRescue)
+  return fetch(api("apiUrlRescue"))
     .then(response => {
       return response.json();
     })

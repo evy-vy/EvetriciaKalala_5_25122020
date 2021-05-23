@@ -44,9 +44,18 @@ header {
 
 footer {
   position: absolute;
-  bottom: 0;
+  // bottom: 0;
   width: 100%;
   @include small-mobile {
     font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-height: 766px) {
+  footer {
+  &.bottom {
+      position: absolute;
+      bottom: 0;
+    }
   }
 }

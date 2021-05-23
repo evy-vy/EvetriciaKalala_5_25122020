@@ -1,7 +1,7 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
 
-const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
+// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
+// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
 let cameras = "cameras"; //Choix du Produit à vendre.
 let urlId = ""; // récupération de l"id pour affichage individuel des produits. 
 
@@ -29,7 +29,7 @@ function getId() {
 urlId = getId();
 
 function selectedUrl(id) {
-  return fetch(apiUrlRescue + id)
+  return fetch(api("apiUrlRescue") + id)
     .then(response => {
       return response.json();
     })

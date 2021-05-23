@@ -10810,10 +10810,6 @@ img#logo {
   position: unset;
 }
 
-header {
-  position: relative;
-}
-
 #cameraId {
   display: block;
   margin-top: 15px;
@@ -10871,6 +10867,7 @@ header {
 
 select#selectOptions {
   margin-top: 7px !important;
+  max-width: 110px;
 }
 
 .lenses {
@@ -10894,6 +10891,13 @@ footer {
 @media screen and (max-width: 576px) {
   footer {
     font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-height: 830px) {
+  footer.bottom {
+    position: absolute;
+    bottom: 0;
   }
 }
 

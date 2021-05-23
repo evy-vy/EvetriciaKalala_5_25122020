@@ -10842,12 +10842,18 @@ header {
 
 footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
 }
 @media screen and (max-width: 576px) {
   footer {
     font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-height: 766px) {
+  footer.bottom {
+    position: absolute;
+    bottom: 0;
   }
 }
 

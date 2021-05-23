@@ -1,11 +1,27 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
 
-const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
-const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
-const apiUrlPost = "https://jwdp5.herokuapp.com/api/cameras/order/" // url post
-let cameras = "cameras"; //Choix du Produit à vendre.
+// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
+// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
+// const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
+// const apiUrlPost = "https://jwdp5.herokuapp.com/api/cameras/order/" // url post
+// let cameras = "cameras"; //Choix du Produit à vendre.
 let montantPanier = 0;
+
+// const api = (url) => {
+//   // console.log(url);
+//   let apiUrl =
+//   {
+//     apiUrlOriginal: "http://localhost:3000/api/cameras/",
+//     apiUrlRescue: "https://jwdp5.herokuapp.com/api/cameras/",
+//     apiUrlPostOriginal: "http://localhost:3000/api/cameras/order/",
+//     apiUrlPost: "https://jwdp5.herokuapp.com/api/cameras/order/"
+//   }
+
+//   return apiUrl[url];
+// }
+
+// let test = api('apiUrlOriginal');
+// console.log(test);
 /*******************************Page-3**Le Panier*******************************/
 
 //Saisie de l'Id dans lequel sera comptabiliser les articles ajoutés au panier
@@ -116,6 +132,12 @@ for (let i = 0; i < localStorage.length; i++) {
   // // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
   quantityChoice.addEventListener('change', (e) => {
 
+    if (e.target.value < 1 || e.target.value > 5) {
+      alert("Merci de saisir une quantité comprise entre 1 et 5.")
+      console.log("non");
+      return false
+    }
+
     //permet d'identifier l'input sur lequel on clic
     console.log('change :', e.target.dataset.key); //key correspond a la clé du localStorage correpondant au produit qu'on modifie
     console.log(e.target.value);
@@ -140,7 +162,7 @@ for (let i = 0; i < localStorage.length; i++) {
       newMontantPanier += (appareil.prix / 100) * appareil.quantite;
     }
     console.log('total panier', newMontantPanier);
-    totalArea.innerHTML = "<strong> Montant total </strong> :  " + newMontantPanier.toFixed(2) + '€';
+    totalArea.innerHTML = "<p><strong> Montant total </strong> :  " + newMontantPanier.toFixed(2) + "€</p>";
   })
 
   //creation d'un td
@@ -157,7 +179,7 @@ for (let i = 0; i < localStorage.length; i++) {
   console.log('total : ', montantPanier.toFixed(2) + '€');
 
   let totalArea = document.getElementById("cartTotalAmountDiv");
-  totalArea.innerHTML = "<strong>Montant total </strong> : " + montantPanier.toFixed(2) + '€';
+  totalArea.innerHTML = "<p><strong>Montant total </strong> : " + montantPanier.toFixed(2) + "€</p>";
 
   document.getElementById("table").append(tbody)
   tableDiv.append(iconSupprimer, tableImg, tableDivName);
@@ -357,7 +379,7 @@ const checkForSubmit = (form) => {
     console.log("post :", post);
     console.log("products", productsList);
 
-    fetch(apiUrlPost, { // ce que j'envoie
+    fetch(api("apiUrlPost"), { // ce que j'envoie
       method: "POST",
       headers: {
         "Accept": "application/json",

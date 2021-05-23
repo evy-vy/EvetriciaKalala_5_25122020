@@ -12,9 +12,9 @@ img#logo {
   position : unset;
 };
 
-header { 
-  position: relative;
-}
+// header { 
+//   position: relative;
+// }
 
 #cameraId {
   display: block;
@@ -46,6 +46,7 @@ header {
 
 select#selectOptions {
   margin-top: 7px !important;
+  max-width: 110px;
 }
 
 .lenses {
@@ -65,8 +66,18 @@ button.shopping-bag.btn.btn-primary {
  footer {
   position: absolute;
   width: 100%;
+  // bottom: 0;
   @include small-mobile {
     font-size: 0.875rem;
   }
-}
+ }
+
+  @media screen and (min-height: 830px) {
+    footer {
+    &.bottom {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
 
