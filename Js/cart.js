@@ -1,27 +1,7 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
-
-// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
-// const apiUrlPostOriginal = "http://localhost:3000/api/cameras/order/"; //url post original.
-// const apiUrlPost = "https://jwdp5.herokuapp.com/api/cameras/order/" // url post
-// let cameras = "cameras"; //Choix du Produit à vendre.
+/***********************************************variables*************************************************/
 let montantPanier = 0;
 
-// const api = (url) => {
-//   // console.log(url);
-//   let apiUrl =
-//   {
-//     apiUrlOriginal: "http://localhost:3000/api/cameras/",
-//     apiUrlRescue: "https://jwdp5.herokuapp.com/api/cameras/",
-//     apiUrlPostOriginal: "http://localhost:3000/api/cameras/order/",
-//     apiUrlPost: "https://jwdp5.herokuapp.com/api/cameras/order/"
-//   }
-
-//   return apiUrl[url];
-// }
-
-// let test = api('apiUrlOriginal');
-// console.log(test);
 /*******************************Page-3**Le Panier*******************************/
 
 //Saisie de l'Id dans lequel sera comptabiliser les articles ajoutés au panier
@@ -103,6 +83,7 @@ for (let i = 0; i < localStorage.length; i++) {
   let itemPrice = document.createElement("small");
   itemPrice.classList.add("price");
 
+  //variable qui contient le prix de l'item sélectionné
   let price = itemsInCart.prix / 100;
   itemPrice.innerHTML = "<strong> Prix : </strong> " + price.toFixed(2) + "€";
 
@@ -131,7 +112,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
   // // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
   quantityChoice.addEventListener('change', (e) => {
-
+    //si la quantite saisie est inferieur a 1 ou sup à 5 => message d'alerte
     if (e.target.value < 1 || e.target.value > 5) {
       alert("Merci de saisir une quantité comprise entre 1 et 5.")
       console.log("non");
@@ -178,9 +159,11 @@ for (let i = 0; i < localStorage.length; i++) {
   montantPanier += parseInt(prixLigne);
   console.log('total : ', montantPanier.toFixed(2) + '€');
 
+  // inclus le prix total de panier dans la div cartTotalAmoutDiv
   let totalArea = document.getElementById("cartTotalAmountDiv");
   totalArea.innerHTML = "<p><strong>Montant total </strong> : " + montantPanier.toFixed(2) + "€</p>";
 
+  //inject le code js dans le html 
   document.getElementById("table").append(tbody)
   tableDiv.append(iconSupprimer, tableImg, tableDivName);
   tableRow.append(tableData, tableDataInput, dataTotalLigne);
@@ -294,7 +277,6 @@ form.addEventListener('submit', (e) => {
 });
 
 // fonction qui verifie que les champs sont tous bons pour l'envoi
-
 const checkForSubmit = (form) => {
   let fields = [
     {
@@ -353,7 +335,6 @@ const checkForSubmit = (form) => {
     console.log(order);
 
     let productsList = [];
-    // let montantCommande = 0;
     for (let i = 0; i < localStorage.length; i++) {
       console.log(i);
       let key = localStorage.key(i);
@@ -361,11 +342,9 @@ const checkForSubmit = (form) => {
       let itemsInCart = JSON.parse(localStorage.getItem(key));
       console.log('articles :', itemsInCart);
       productsList.push(itemsInCart.id);
-      // montantCommande += itemsInCart.quantite * (itemsInCart.prix / 100);
     }
     localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerHTML);
 
-    // console.log(montantCommande);
     let post = {
       "contact": {
         "firstName": order.firstName,

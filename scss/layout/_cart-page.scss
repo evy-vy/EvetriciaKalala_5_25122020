@@ -114,9 +114,7 @@ td img {
 }
 
 .totalTable{
-//  border-top: 3px dashed #f8dee3;
  width: 100%;
-//  max-width: 400px;
 }
 td:last-child{
   text-align: right;
@@ -163,7 +161,6 @@ th:last-child{
 #cartTotalAmountDiv {
   display: flex;
   justify-content: flex-end;
-  // font-weight: bold;
   p {
     border-top: 3px dashed #f8dee3;
     padding : 10px;

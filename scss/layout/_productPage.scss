@@ -12,10 +12,6 @@ img#logo {
   position : unset;
 };
 
-// header { 
-//   position: relative;
-// }
-
 #cameraId {
   display: block;
   margin-top: 15px;
@@ -25,7 +21,6 @@ img#logo {
   justify-content: start;
   margin-left: 20px;
   @include small-mobile {
-    // justify-content: center;
     margin-left: 0;
   }
 }
@@ -38,10 +33,6 @@ img#logo {
   flex-direction: column;
   align-items: baseline;
   display: inline-block;
-  // justify-content: space-around;
-  // @include small-mobile {
-  //   justify-content: start;
-  // }
 }
 
 select#selectOptions {
@@ -66,7 +57,6 @@ button.shopping-bag.btn.btn-primary {
  footer {
   position: absolute;
   width: 100%;
-  // bottom: 0;
   @include small-mobile {
     font-size: 0.875rem;
   }

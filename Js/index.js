@@ -1,7 +1,4 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
-
-// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
 let cameras; //Choix du Produit à vendre.
 
 
@@ -49,37 +46,37 @@ camerasContainer();
 function displayArticles(camera) {
   // console.log(camera); /*test*/
   //création d'une div
-  let newDiv = document.createElement("div");
+  const newDiv = document.createElement("div");
   newDiv.classList.add("row");
 
   //création d"une liste désordonnée
-  let newUl = document.createElement("ul");
+  const newUl = document.createElement("ul");
   newUl.classList.add("class", "list", "col-7", "col-sm-6", "col-md-5", "col-xl-4", "ms-sm-3", "ms-xl-5", "mb-3", "mx-2");
 
   // création d"une liste
-  let newLi = document.createElement("li");
+  const newLi = document.createElement("li");
   newLi.classList.add("list__card", "card", "text-center", "card-body", "text-light", "lead"/*, "my-5"*/);
 
   //// Dans la liste : ////
 
   // ajout du titre
-  let title = document.createElement("h2");
+  const title = document.createElement("h2");
   title.classList.add("list__title", "card-title", "card-header", "text-uppercase", "text-center", "col-12", "mb-3");
   title.innerHTML = camera.name;
 
-  // de l"image
-  let image = document.createElement("img");
+  // de l'image
+  const image = document.createElement("img");
   image.src = camera.imageUrl;
   image.classList.add("list__image", "card-img-top");
   image.setAttribute("alt", "appareil photo " + camera.name);
 
   // du paragraphe descriptif
-  let paragraph = document.createElement("p");
+  const paragraph = document.createElement("p");
   paragraph.classList.add("list__description", "mt-3", "mb-3", "lead");
   paragraph.innerText = camera.description;
 
   // lien vers la page produit
-  let link = document.createElement("a");
+  const link = document.createElement("a");
   link.id = "cardBtn";
   link.href = "product.html?id=" + camera._id;
   link.setAttribute("role", "button");

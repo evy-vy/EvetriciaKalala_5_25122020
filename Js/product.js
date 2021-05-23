@@ -1,7 +1,4 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
-
-// const apiUrlOriginal = "http://localhost:3000/api/cameras/"; //url API.
-// const apiUrlRescue = "https://jwdp5.herokuapp.com/api/cameras/"; //url de secours.
 let cameras = "cameras"; //Choix du Produit à vendre.
 let urlId = ""; // récupération de l"id pour affichage individuel des produits. 
 
@@ -11,10 +8,7 @@ let urlId = ""; // récupération de l"id pour affichage individuel des produits
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
 
-
 //Récupération de l'URL de la page sur laquelle on se trouve + ajout de l"id produit. On accède au éléments de l'url de la page en cours grace a window.location.search
-
-
 
 function getId() {
   const url = window.location.search; //renvoie la partie chaine de requête d'une url (tout ce qui vient après ? (? compris. il est utilisé pour le passage de paramètres)).
@@ -82,7 +76,6 @@ function getLocalStorageEltById(id, option) {
 }
 
 //fonction qui affiche les élément dans le html
-
 function displayCameraById(camera) {
   // création d"une ligne
   let newDiv = document.createElement("div");
