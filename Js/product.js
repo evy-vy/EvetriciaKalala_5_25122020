@@ -152,6 +152,7 @@ function displayCameraById(camera) {
   let lenses = camera.lenses;
 
   const optionsCamera = () => {
+
     selectOption = document.createElement("select");
     selectOption.id = "selectOptions";
     selectOption.setAttribute("name", "selectOptions");
@@ -225,6 +226,10 @@ function displayCameraById(camera) {
       // quantité ajouté au clic
       console.log(item.quantite);
 
+      if (item.quantite < 1 || item.quantite > 5) {
+        alert("Merci de saisir une quantité comprise entre 1 et 5");
+        return false;
+      }
       // addition des quantités. parseInt analyse une chaîne et renvoi un entier.
       item.quantite = parseInt(element.quantite) + parseInt(item.quantite);
 
