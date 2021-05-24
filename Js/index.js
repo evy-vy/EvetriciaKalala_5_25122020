@@ -1,14 +1,12 @@
+
+
 /*************************Données globales nécessaires à la construction du projet*************************/
 let cameras; //Choix du Produit à vendre.
-
-
-/*******************************Page-1**Affichage de l"ensemble des produits*******************************/
-
 
 //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
-
+/*******************************Page-1**Affichage de l"ensemble des produits*******************************/
 
 /***********************************Récupération des éléments dans l"api***********************************/
 

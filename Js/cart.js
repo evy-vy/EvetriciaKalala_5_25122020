@@ -12,12 +12,12 @@ compteur.innerHTML = localStorage.length;
 /***************récupération des articles dans le localStorage**************/
 
 //fonction qui permet de 
-const supprimer = clé => {
+const supprimer = cle => {
   //ajout d'une icone delete pour chaque article ajouté au panier
   let deleteIcon = document.createElement("i");
   deleteIcon.setAttribute("class", "fas fa-times-circle");
   deleteIcon.classList.add("col-1");
-  deleteIcon.dataset.key = clé; //la clé est l'identifiant de l'appareil sur lequel on se trouve dans le localStorage
+  deleteIcon.dataset.key = cle; //la clé est l'identifiant de l'appareil sur lequel on se trouve dans le localStorage
   console.log(deleteIcon);
   return deleteIcon;
 }
@@ -50,7 +50,7 @@ for (let i = 0; i < localStorage.length; i++) {
   tableData.append(tableDiv);
 
   //je stock le retour de ma fonction "supprimer" pour pouvoir la rappeler. i est la clé d'un appareil bouclé dans le localstorage
-  let iconSupprimer = supprimer(i);
+  let iconSupprimer = supprimer(localStorage.key(i));
 
   //On écoute le clic sur l'icone supprimer
   iconSupprimer.addEventListener("click", (e) => {
@@ -114,7 +114,7 @@ for (let i = 0; i < localStorage.length; i++) {
   quantityChoice.addEventListener('change', (e) => {
     //si la quantite saisie est inferieur a 1 ou sup à 5 => message d'alerte
     if (e.target.value < 1 || e.target.value > 5) {
-      alert("Merci de saisir une quantité comprise entre 1 et 5.")
+      alert("Merci de saisir une quantité comprise entre 1 et 5")
       console.log("non");
       return false
     }
