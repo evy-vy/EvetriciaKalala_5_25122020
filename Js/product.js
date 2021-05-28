@@ -1,29 +1,49 @@
 /*************************Données globales nécessaires à la construction du projet*************************/
-let cameras = "cameras"; //Choix du Produit à vendre.
-let urlId = ""; // récupération de l"id pour affichage individuel des produits. 
+let camera; //variable qui récupère le produit à afficher.
+let urlId = ""; // variable qui récupère l'id produit pour affichage individuel. 
+let compteur = document.getElementById("howManyInBag"); //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
+compteur.innerHTML = localStorage.length;
+
+/*********************Fonction(s) scope globale***********************/
+
+//Par cette fonction, on vérifie si le localStorage est vide ou non.
+function getLocalStorageEltById(id, option) {
+
+  //condition permettant de vérifier que le panier est vide
+  if (localStorage.length === 0) {
+    return null;
+  }
+
+  //Boucle permettant de parcourir le localStorage, de récupérer la clé des éléments présents, de la stocker sous forme d'objet dans la constante elt, puis de comparer l'id et l'option d'un objet récupéré dans le localStorage à l'id et à l'option de l'item ajouté au clic.
+  for (i = 0; i < localStorage.length; i++) {
+    let element = localStorage.getItem(localStorage.key(i));
+    let elt = JSON.parse(element);
+
+    if (elt.id === id && elt.option === option) {
+      return i;
+    }
+  }
+  return null;
+}
 
 /****************************Page-2**Affichage du produit sélectionné par l"internaute**********************/
 
-//permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
-let compteur = document.getElementById("howManyInBag");
-compteur.innerHTML = localStorage.length;
-
-//Récupération de l'URL de la page sur laquelle on se trouve + ajout de l"id produit. On accède au éléments de l'url de la page en cours grace a window.location.search
+/*
+*Récupération de l'URL de la page sur laquelle on se trouve + ajout de l"id produit. 
+*On accède au éléments de l'url de la page en cours grace a window.location.search 
+*/
 
 function getId() {
-  const url = window.location.search; //renvoie la partie chaine de requête d'une url (tout ce qui vient après ? (? compris. il est utilisé pour le passage de paramètres)).
-  console.log("url :", url);
-  let params = new URLSearchParams(url); //constructeur qui permet d'extraire l'id
-  console.log(params)
-  let id = params.get("id"); //méthode get qui retourne la première valeur associée au paramètre de recherche donné.
-
-  console.log(id);
+  const url = window.location.search; //renvoie la partie chaine de requête d'une url
+  const params = new URLSearchParams(url); //permet d'extraire l'id
+  const id = params.get("id"); //méthode get qui retourne la première valeur associée au paramètre de recherche donné.
   return id;
 }
+
 urlId = getId();
 
-function selectedUrl(id) {
-  return fetch(api("apiUrlRescue") + id)
+function selectedUrl(urlId) {
+  return fetch(api("apiUrlRescue") + urlId)
     .then(response => {
       return response.json();
     })
@@ -34,90 +54,54 @@ function selectedUrl(id) {
 
 //Me permet de récuperer et d"afficher le produit sélectionné selon son id
 async function cameraId() {
-  let camera = await selectedUrl(urlId);
-  // console.log(camera);
+  camera = await selectedUrl(urlId);
   displayCameraById(camera);
 }
+
 cameraId();
 
-
-/*AddEventListener et localStorage*/
-
-/*Par cette fonction, on vérifie si le localStorage est vide ou non.
-* S'il est vide, ou si un objet est inexistant, la valeur qui sera retournée par la fonction sera NULL.
-* Sinon, la valeur qui sera retournée sera la clé de l'objet présent dans le local storage.
-*/
-
-//function qui retourne comme valeur soit l'inexistance d'un objet (NULL) soit la clé de l'objet présent dans le localStorage.
-function getLocalStorageEltById(id, option) {
-
-  //condition permettant de vérifier que le panier est vide
-  if (localStorage.length === 0) {
-    return null;
-  }
-  //affiche le résultat du contenu du localStorage
-  console.log('getLocalStorage :', localStorage);
-
-  //boucle permettant de parcourir le localStorage
-  for (i = 0; i < localStorage.length; i++) {
-    //de récupérer la clé des éléments présents.
-    let element = localStorage.getItem(localStorage.key(i));
-    //la clé (element) qui est un string, est enregistrée dans la variable elt sous forme d'objet grâce à JSON.parse.
-    let elt = JSON.parse(element);
-    //si la clé et l'option d'un objet récupéré dans le localStorage est strictement égale à l'id et à l'option de l'item ajouté au clic alors la condition retourne la clé.
-    if (elt.id === id && elt.option === option) {
-
-      // retourne la clé (key)
-      return i;
-    }
-  }
-  // sinon l'élément non trouvé = null
-  return null;
-}
-
-//fonction qui affiche les élément dans le html
+//fonction qui affiche les éléments dans le html
 function displayCameraById(camera) {
+
   // création d"une ligne
-  let newDiv = document.createElement("div");
+  const newDiv = document.createElement("div");
   newDiv.classList.add("row");
 
   // création d"une liste désordonnée
-  let newUl = document.createElement("ul");
+  const newUl = document.createElement("ul");
   newUl.classList.add("class", "list", "col-8", "col-sm-6", "col-md-5", "col-xl-4", "ms-sm-3", "ms-md-1", "ms-xl-5", "mb-3");
 
   // création d"une liste
-  let newLi = document.createElement("li");
+  const newLi = document.createElement("li");
   newLi.classList.add("list__card", "card", "text-center", "card-body", "text-light", "lead");
 
-  /* Dans la liste : */
-
   // ajout du titre
-  let title = document.createElement("h2");
+  const title = document.createElement("h2");
   title.classList.add("list__title", "card-title", "card-header", "text-uppercase", "text-center", "col-12");
   title.innerHTML = camera.name;
 
   // de l"image
-  let image = document.createElement("img");
+  const image = document.createElement("img");
   image.src = camera.imageUrl;
   image.classList.add("list__image", "card-img-top");
   image.setAttribute("alt", "appareil photo " + camera.name);
 
   // du paragraphe descriptif
-  let paragraph = document.createElement("p");
+  const paragraph = document.createElement("p");
   paragraph.classList.add("list__description", "mt-3", "mb-2", "lead");
   paragraph.innerText = camera.description;
 
   // du prix
-  let price = document.createElement("span");
+  const price = document.createElement("span");
   price.classList.add("list__price", "mb-2", "mx-3");
   price.innerHTML = "Prix : " + camera.price / 100 + ",00€";
 
   //containerChoice
-  let containerChoice = document.createElement("div");
+  const containerChoice = document.createElement("div");
   containerChoice.classList.add("containerChoice", "container-fluid", "d-flex", "flex-wrap", "mb-3")
 
   // quantité
-  let quantity = document.createElement("span");
+  const quantity = document.createElement("span");
   quantity.classList.add("quantity", "row-inline", "fw-bold", "fs-6");
   quantity.innerText = "Quantité :"
 
@@ -128,10 +112,10 @@ function displayCameraById(camera) {
   quantityInput.setAttribute("name", "quantity");
   quantityInput.setAttribute("value", "1");
   quantityInput.setAttribute("min", "1");
-  quantityInput.setAttribute("max", "5");
+  quantityInput.setAttribute("max", "100");
 
   // options (titre)
-  let lensesTitle = document.createElement("span");
+  const lensesTitle = document.createElement("span");
   lensesTitle.classList.add("lenses", "d-inline-block", "row-inline", "fw-bold", "fs-6", "sm-mx-2");
   lensesTitle.innerText = "Lentilles :"
 
@@ -139,7 +123,7 @@ function displayCameraById(camera) {
   * Création d"une fonction me permettant de creer un input select dans lequel je peux lister, grâce à une boucle, les lentilles disponibles pour l"appareil photo selectionné.
   */
 
-  //création des variables nécessaire à la création de la structure du select input et des options
+  //création des variables et constante nécessaire à la création de la structure du select input et des options
   let selectOption;
   let cameraOption;
   let lenses = camera.lenses;
@@ -153,9 +137,8 @@ function displayCameraById(camera) {
 
     //pour chaque valeur trouvée dans le array "lenses" de la camera sélectionnée, une nouvelle option est créée.
     for (i = 0; i < lenses.length; i++) {
-      console.log(lenses[i]);
       cameraOption = document.createElement("option");
-      cameraOption.setAttribute("value", lenses[i]);//[i] correspond à la valeur récupérée.
+      cameraOption.setAttribute("value", lenses[i]); //[i] correspond à la valeur récupérée.
       cameraOption.classList.add("mx-2", "my-2");
       cameraOption.innerHTML = lenses[i];
       selectOption.append(cameraOption);
@@ -185,17 +168,11 @@ function displayCameraById(camera) {
       "id": camera._id
     }
 
-    //affiche le nombre d'article présent dans le localStorage
-    console.log(localStorage.length);
-
-    //création fonction pour récupérer un article du localStorage avec pour paramètre id et option de l'article
+    //création d'une constante qui à pour valeur une fonction ayant pour paramètre l'id et l'option de item créé au clic. 
     let localStorageElt = getLocalStorageEltById(item.id, item.option);
 
     //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
-    let compteur = document.getElementById("howManyInBag");
-
-    console.log(localStorageElt); //affiche si l'article selectionné est déja présent ou null
-    console.log(compteur.innerHTML); //affiche le nombre d'article au compteur 
+    const compteur = document.getElementById("howManyInBag");
 
     //si null => l'objet correspondant aux données envoyées lors du clic est créé dans le localStorage sous forme de chaine
     if (localStorageElt === null) {
@@ -207,27 +184,11 @@ function displayCameraById(camera) {
 
     } else {
 
-      //indique dans la console si l'élément existe déja
-      console.log(localStorageElt);
-
-      //les valeurs recupérées sont enregistrés dans la variable element.
+      //les valeurs recupérées sont enregistrés dans la constante element.
       let element = JSON.parse(localStorage.getItem(localStorage.key(localStorageElt)));
 
-      // quantité récupéré dans le localStorage 
-      console.log(element.quantite);
-
-      // quantité ajouté au clic
-      console.log(item.quantite);
-
-      if (item.quantite < 1 || item.quantite > 5) {
-        alert("Merci de saisir une quantité comprise entre 1 et 5");
-        return false;
-      }
       // addition des quantités. parseInt analyse une chaîne et renvoi un entier.
       item.quantite = parseInt(element.quantite) + parseInt(item.quantite);
-
-      //affichage de la quantité dans la console
-      console.log(item.quantite);
 
       // mise à jour de l'élément dans le localStorage
       localStorage.setItem(localStorageElt, JSON.stringify(item));

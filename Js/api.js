@@ -1,5 +1,6 @@
+/***********************Fonction API***********************/
+
 const api = (url) => {
-  // console.log(url);
   let apiUrl =
   {
     apiUrlOriginal: "http://localhost:3000/api/cameras/",
@@ -10,6 +11,3 @@ const api = (url) => {
 
   return apiUrl[url];
 }
-
-let test = api('apiUrlOriginal');
-console.log(test);

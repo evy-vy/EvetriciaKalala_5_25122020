@@ -1,77 +1,72 @@
+/*********************************************Page-3**Le Panier*********************************************/
 /*************************Données globales nécessaires à la construction du projet*************************/
-/***********************************************variables*************************************************/
 let montantPanier = 0;
 
-/*******************************Page-3**Le Panier*******************************/
-
-//Saisie de l'Id dans lequel sera comptabiliser les articles ajoutés au panier
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
 
+/******Fonction(s) scope globale*******/
 
-/***************récupération des articles dans le localStorage**************/
-
-//fonction qui permet de 
+//fonction qui permet l'ajout d'une icone delete pour chaque article ajouté au panier
 const supprimer = cle => {
-  //ajout d'une icone delete pour chaque article ajouté au panier
-  let deleteIcon = document.createElement("i");
+
+  const deleteIcon = document.createElement("i");
   deleteIcon.setAttribute("class", "fas fa-times-circle");
   deleteIcon.classList.add("col-1");
   deleteIcon.dataset.key = cle; //la clé est l'identifiant de l'appareil sur lequel on se trouve dans le localStorage
-  console.log(deleteIcon);
+
   return deleteIcon;
 }
 
+/*********************************récupération des articles dans le localStorage********************************/
+
 //cette boucle me permettant de récuperer les articles présent dans le localstorage ainsi que l'ensemble des informations lié à chaque article grace à leur clé et de les afficher dans la console
 for (let i = 0; i < localStorage.length; i++) {
-  console.log(i);
 
-  let key = localStorage.key(i);
-  console.log(key, localStorage.getItem(key));
-  let itemsInCart = JSON.parse(localStorage.getItem(key));
-  console.log('articles :', itemsInCart);
+  const key = localStorage.key(i);
+  const itemsInCart = JSON.parse(localStorage.getItem(key));
 
   //création du tableau recevant les articles
-  let tbody = document.createElement("tbody");
+  const tbody = document.createElement("tbody");
   tbody.classList.add("tableBody");
 
   //création d'une ligne
-  let tableRow = document.createElement("tr");
+  const tableRow = document.createElement("tr");
   tableRow.classList.add("allLine");
   tbody.append(tableRow);
 
   //création de la ligne de données
-  let tableData = document.createElement("td");
+  const tableData = document.createElement("td");
   tableData.classList.add("imgNamePrice");
 
   //création d'une div
-  let tableDiv = document.createElement("div");
+  const tableDiv = document.createElement("div");
   tableDiv.classList.add("cart-info");
   tableData.append(tableDiv);
 
   //je stock le retour de ma fonction "supprimer" pour pouvoir la rappeler. i est la clé d'un appareil bouclé dans le localstorage
-  let iconSupprimer = supprimer(localStorage.key(i));
+  const iconSupprimer = supprimer(localStorage.key(i));
 
   //On écoute le clic sur l'icone supprimer
   iconSupprimer.addEventListener("click", (e) => {
-    let key = e.target.dataset.key;
+    const key = e.target.dataset.key; //permet de cibler la clé sur laquelle se produit l'évènement
     localStorage.removeItem(key);
     document.location.reload();
   });
 
   //création de l'image
-  let tableImg = document.createElement("img");
+  const tableImg = document.createElement("img");
   tableImg.setAttribute("src", itemsInCart.url);
   tableImg.classList.add("itemImg");
   tableImg.setAttribute("alt", "appareil photo " + itemsInCart.nom);
 
   //création d'une div
-  let tableDivName = document.createElement("div");
+  const tableDivName = document.createElement("div");
   tableDivName.classList.add("namePrice");
 
 
   //création d'un paragraphe contenant le nom de l'objet
-  let tableParagraph = document.createElement("p");
+  const tableParagraph = document.createElement("p");
   tableParagraph.classList.add("itemName");
   tableParagraph.innerHTML = itemsInCart.nom + "<br><br>";
 
@@ -80,87 +75,82 @@ for (let i = 0; i < localStorage.length; i++) {
   itemOption.innerHTML = "<strong> Lentille : </strong>" + itemsInCart.option;
 
   //création d'un small contenant le prix de l'objet
-  let itemPrice = document.createElement("small");
+  const itemPrice = document.createElement("small");
   itemPrice.classList.add("price");
 
-  //variable qui contient le prix de l'item sélectionné
-  let price = itemsInCart.prix / 100;
+  //constante qui contient le prix de l'item sélectionné
+  const price = itemsInCart.prix / 100;
   itemPrice.innerHTML = "<strong> Prix : </strong> " + price.toFixed(2) + "€";
-
 
   tableDivName.append(tableParagraph, itemOption, itemPrice);
 
   //création de la ligne de données pour l'input
-  let tableDataInput = document.createElement("td");
+  const tableDataInput = document.createElement("td");
   tableDataInput.classList.add("dataInput");
 
   //création de l'input quantité
   const quantityField = quantityKey => {
-    let quantityInput = document.createElement("input");
-    // quantityInput.classList.add("quantityInput");
+    const quantityInput = document.createElement("input");
     quantityInput.setAttribute("type", "number");
     quantityInput.setAttribute("name", "quantity");
     quantityInput.setAttribute("value", itemsInCart.quantite);
     quantityInput.setAttribute("min", "1");
-    quantityInput.setAttribute("max", "5");
+    quantityInput.setAttribute("max", "100");
     quantityInput.dataset.key = quantityKey; //clé du localeStorage qui permet de retrouver l'appareil sur lequel on se trouve. On l'identifie via sa clé (key) dans le localStorage.
-    console.log(quantityInput);
     return quantityInput;
   }
 
-  let quantityChoice = quantityField(i);
+  const quantityChoice = quantityField(i);
 
-  // // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
+  // Ajout d'un écouteur sur quantityInput pour chaque ligne parcouru dans le localStorage
   quantityChoice.addEventListener('change', (e) => {
-    //si la quantite saisie est inferieur a 1 ou sup à 5 => message d'alerte
-    if (e.target.value < 1 || e.target.value > 5) {
-      alert("Merci de saisir une quantité comprise entre 1 et 5")
-      console.log("non");
-      return false
-    }
 
-    //permet d'identifier l'input sur lequel on clic
-    console.log('change :', e.target.dataset.key); //key correspond a la clé du localStorage correpondant au produit qu'on modifie
-    console.log(e.target.value);
-    let newQuantity = e.target.value; //récupère la valeur de l'input
-    let appareil = JSON.parse(localStorage.getItem(e.target.dataset.key)); //récupèration de l'appareil
-    console.log('1 :', appareil);
-    appareil.quantite = newQuantity; //modifie la quantité de l'appareil.
-    console.log('2 :', appareil);
-    localStorage.setItem(e.target.dataset.key, JSON.stringify(appareil)); //enregistre le produit modifié dans le localStorage
-    let newTotalLine = appareil.quantite * (appareil.prix / 100);
+    //récupère la valeur de l'input
+    const newQuantity = e.target.value;
+
+    //récupèration de l'appareil
+    /*
+    *e.target.dataset.key permet d'identifier l'input sur lequel on clic.
+    *key correspond a la clé du localStorage correpondant au produit qu'on modifie
+    */
+    const appareil = JSON.parse(localStorage.getItem(e.target.dataset.key));
+
+    //modifie la quantité de l'appareil.
+    appareil.quantite = newQuantity;
+
+    //met à jour le produit modifié dans le localStorage
+    localStorage.setItem(e.target.dataset.key, JSON.stringify(appareil));
+
+    //prix d'un article * sa quantité
+    const newTotalLine = appareil.quantite * (appareil.prix / 100);
     dataTotalLigne.innerHTML = newTotalLine.toFixed(2) + '€';
-    console.log(newTotalLine);
-
 
     //calcul du montant total du panier
     let newMontantPanier = 0;
     for (let i = 0; i < localStorage.length; i++) {
-      console.log(i);
-      let key = localStorage.key(i);
-      console.log(key, localStorage.getItem(key));
-      let appareil = JSON.parse(localStorage.getItem(key)); //permet de récupérer l'objet du localStorage
+      const key = localStorage.key(i);
+
+      //permet de récupérer l'objet du localStorage
+      const appareil = JSON.parse(localStorage.getItem(key));
       newMontantPanier += (appareil.prix / 100) * appareil.quantite;
     }
-    console.log('total panier', newMontantPanier);
+
+    //affichage du montant total du panier dans le html
     totalArea.innerHTML = "<p><strong> Montant total </strong> :  " + newMontantPanier.toFixed(2) + "€</p>";
   })
 
   //creation d'un td
-  let dataTotalLigne = document.createElement("td");
+  const dataTotalLigne = document.createElement("td");
   dataTotalLigne.classList.add("totalLigne");
   itemPrice.classList.add("total");
-  let prixLigne = (itemsInCart.prix / 100) * itemsInCart.quantite;
+  const prixLigne = (itemsInCart.prix / 100) * itemsInCart.quantite;
   dataTotalLigne.innerHTML = prixLigne.toFixed(2) + "€";
-  console.log('montantpanier : ', montantPanier);
-  console.log('ligne : ', prixLigne);
 
   // calcul la somme de la ligne
   montantPanier += parseInt(prixLigne);
-  console.log('total : ', montantPanier.toFixed(2) + '€');
 
   // inclus le prix total de panier dans la div cartTotalAmoutDiv
-  let totalArea = document.getElementById("cartTotalAmountDiv");
+  const totalArea = document.getElementById("cartTotalAmountDiv");
   totalArea.innerHTML = "<p><strong>Montant total </strong> : " + montantPanier.toFixed(2) + "€</p>";
 
   //inject le code js dans le html 
@@ -171,7 +161,7 @@ for (let i = 0; i < localStorage.length; i++) {
 }
 
 //permet de supprimer le contenu entier du panier
-let removeAll = document.getElementById("removeAll");
+const removeAll = document.getElementById("removeAll");
 removeAll.addEventListener("click", (e) => {
   localStorage.clear();
   document.location.reload();
@@ -180,39 +170,35 @@ removeAll.addEventListener("click", (e) => {
 /*************************************FORM**********************************/
 
 // récupération du formulaire
-let form = document.querySelector("#inscription");
-console.log('form :', form);
+const form = document.querySelector("#inscription");
 
 //On écoute les modifications apportées dans l'évenement que l'on cible (input email).
 form.email.addEventListener('change', (e) => {
 
   //je récupère la balise qui me permettra de transmettre un message au client selon que la valeur saisie dans l'evenement cible est bon ou mauvais en fonction du type que l'on attend.
-  let element = document.getElementById("emailWarning");
+  const element = document.getElementById("emailWarning");
   verifInput(e.target.value, "email", element);
-  // console.log(form.email); //test
 });
 
 form.lastName.addEventListener('change', (e) => {
-  let element = document.getElementById("lastNameWarning");
+  const element = document.getElementById("lastNameWarning");
   verifInput(e.target.value, "string", element);
 });
 
 form.firstName.addEventListener('change', (e) => {
-  let element = document.getElementById("firstNameWarning");
+  const element = document.getElementById("firstNameWarning");
   verifInput(e.target.value, "string", element);
 });
 
 form.address.addEventListener('change', (e) => {
-  let element = document.getElementById("addressWarning");
+  const element = document.getElementById("addressWarning");
   verifInput(e.target.value, "address", element);
 });
 
 form.city.addEventListener('change', (e) => {
-  let element = document.getElementById("cityWarning");
+  const element = document.getElementById("cityWarning");
   verifInput(e.target.value, "string", element);
 });
-
-
 
 /************************** Validation FORM******************************/
 
@@ -220,13 +206,11 @@ form.city.addEventListener('change', (e) => {
 * un message est ensuite affichée si la valeur est bonne ou fausse
 */
 const verifInput = (value, type, element) => {
-  console.log("coucou  :", value);
-  console.log("coucou  :", type);
+
   let regExp;
 
   //on vérifie que les champs soient bien remplis et qu'aucun espace ou tab etc seul ne soit accepté comme valeur valide.
-
-  if (value.trim() === "") {//
+  if (value.trim() === "") {
     element.innerHTML = "Données non valides";
     element.classList.remove("text-success");
     element.classList.add("text-danger");
@@ -234,23 +218,17 @@ const verifInput = (value, type, element) => {
   }
   switch (type) {
     case "email":
-      console.log("verif");
       regExp = new RegExp("^[0-9a-zA-Z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}");
       break;
     case "string":
-      console.log("string");
       regExp = new RegExp("^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]+$");
       break;
     case "address":
-      console.log("address");
       regExp = new RegExp("^[-'a-zA-Z0-9À-ÖØ-öø-ÿ ]+$");
       break;
   }
-  console.log("regex", regExp);
-  console.log("type :", type);
-  console.log("value: ", value); //verifie la valeur envoyé dans l'input
+
   if (regExp.test(value)) {
-    console.log("ok");
     if (element != undefined) {
       element.innerHTML = "Données valides";
       element.classList.remove("text-danger");
@@ -258,7 +236,6 @@ const verifInput = (value, type, element) => {
     }
     return true;
   } else {
-    console.log("pas ok");
     if (element != undefined) {
       element.innerHTML = "Données non valides";
       element.classList.remove("text-success");
@@ -278,7 +255,7 @@ form.addEventListener('submit', (e) => {
 
 // fonction qui verifie que les champs sont tous bons pour l'envoi
 const checkForSubmit = (form) => {
-  let fields = [
+  const fields = [
     {
       "type": "email",
       "value": form.elements["email"].value,
@@ -301,7 +278,6 @@ const checkForSubmit = (form) => {
     }
   ];
 
-
   let isValid = false;
 
   fields.forEach((item) => {
@@ -316,36 +292,33 @@ const checkForSubmit = (form) => {
   //si tous les champs sont bons isValid sera égal a true
   if (isValid) {
     if (localStorage.length === 0) {
-      console.log("vide");
       alert("Pensez à remplir votre panier avant de passer commande !")
     } else {
-      // tout est ok on envois le formulaire
-      console.log("on envoi le formulaire");
       sendOrder(form);
       alert("Votre commande à bien été prise en compte !");
     }
   };
 
-  function sendOrder(form) {
-    let order = [];
-    let formData = new FormData(document.getElementById("inscription")); //récupère les valeurs entrées dans le formulaire et les formates
-    formData.forEach(function (value, key) { //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
+  function sendOrder() {
+    const order = [];
+
+    //récupère les valeurs entrées dans le formulaire et les formates
+    const formData = new FormData(document.getElementById("inscription"));
+
+    //me permet de creer une nouvelle ligne pour chaque clé et valeur du tableau
+    formData.forEach(function (value, key) {
       order[key] = value;
     })
-    console.log(order);
 
-    let productsList = [];
+    const productsList = [];
     for (let i = 0; i < localStorage.length; i++) {
-      console.log(i);
-      let key = localStorage.key(i);
-      console.log(key, localStorage.getItem(key));
-      let itemsInCart = JSON.parse(localStorage.getItem(key));
-      console.log('articles :', itemsInCart);
+      const key = localStorage.key(i);
+      const itemsInCart = JSON.parse(localStorage.getItem(key));
       productsList.push(itemsInCart.id);
     }
     localStorage.setItem("total", document.getElementById("cartTotalAmountDiv").innerHTML);
 
-    let post = {
+    const post = {
       "contact": {
         "firstName": order.firstName,
         "lastName": order.lastName,
@@ -355,10 +328,8 @@ const checkForSubmit = (form) => {
       },
       "products": productsList
     }
-    console.log("post :", post);
-    console.log("products", productsList);
 
-    fetch(api("apiUrlPost"), { // ce que j'envoie
+    fetch(api("apiUrlPost"), { //info "https://jwdp5.herokuapp.com/api/cameras/order/"
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -368,23 +339,13 @@ const checkForSubmit = (form) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('data :', data);
         localStorage.setItem("commandeOK", JSON.stringify(data));
-        console.log(localStorage);
         window.location = "confirmation.html";
       })
-      .catch(error => { // en cas d'erreur
+      .catch(error => {
         alert(error);
       });
   }
 };
-/* ^ = désigne le début du text
-* [a-zA-Z0-9.-_] = indique les caractères autorisés (l'alphabet en minuscule et en majuscule, les chiffres de 0 à 9, les caractères point, tiret et underscore).
-* + = on peut en écrire plusieurs.
-* [@]{1} = on doit utiliser le @ qui doit être utilisé {1} nombre de fois max qu'il peut être utilisé.
-*[a-z]{2,10} = après le point, on peut utiliser des lettres minuscules allant de 2 lettres min jusqu'a 10 max.
-* $ = désigne la fin de l'expression régulière
-* 'g' = marqueur ou flag qui précise comment lire la regex. g correspond à la recherche globale, elle permet de retrouver toutes les correspondances.
-*/
 
 
