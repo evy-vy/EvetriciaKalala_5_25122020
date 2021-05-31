@@ -20,7 +20,7 @@ const supprimer = cle => {
 
 /*********************************récupération des articles dans le localStorage********************************/
 
-//cette boucle me permettant de récuperer les articles présent dans le localstorage ainsi que l'ensemble des informations lié à chaque article grace à leur clé et de les afficher dans la console
+//cette boucle me permettant de récuperer les articles présent dans le localstorage ainsi que l'ensemble des informations liés à chaque article grace à leur clé
 for (let i = 0; i < localStorage.length; i++) {
 
   const key = localStorage.key(i);
@@ -44,7 +44,7 @@ for (let i = 0; i < localStorage.length; i++) {
   tableDiv.classList.add("cart-info");
   tableData.append(tableDiv);
 
-  //je stock le retour de ma fonction "supprimer" pour pouvoir la rappeler. i est la clé d'un appareil bouclé dans le localstorage
+  //je stock le retour de ma fonction "supprimer" pour pouvoir la rappeler. i est la clé d'un appareil dans le localstorage
   const iconSupprimer = supprimer(localStorage.key(i));
 
   //On écoute le clic sur l'icone supprimer
@@ -284,7 +284,6 @@ const checkForSubmit = (form) => {
     //on parcours notre tableaux de champs, et on execute notre fonction de vérification
     isValid = verifInput(item["value"], item["type"]);
     if (!isValid) { //si isValid est false on sort de la boucle
-      // alert("c'est pas boooon on recommence"); //test
       return false
     }
   })
@@ -329,7 +328,7 @@ const checkForSubmit = (form) => {
       "products": productsList
     }
 
-    fetch(api("apiUrlPost"), { //info "https://jwdp5.herokuapp.com/api/cameras/order/"
+    fetch(api(/*"apiUrlPostRescue"*/ "apiUrlPostOriginal"), {
       method: "POST",
       headers: {
         "Accept": "application/json",

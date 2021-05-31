@@ -10859,10 +10859,43 @@ img#logo {
   margin-bottom: 0.5rem;
 }
 
+@media screen and (max-width: 576px) {
+  span.quantity,
+span.lenses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#quantity {
+  width: 40px;
+}
+@media screen and (max-width: 576px) {
+  #quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #selectOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .containerChoice {
   flex-direction: column;
   align-items: baseline;
   display: inline-block;
+}
+@media screen and (max-width: 576px) {
+  .containerChoice {
+    align-items: unset;
+  }
 }
 
 select#selectOptions {

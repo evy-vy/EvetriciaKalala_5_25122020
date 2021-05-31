@@ -16,9 +16,8 @@ function getLocalStorageEltById(id, option) {
 
   //Boucle permettant de parcourir le localStorage, de récupérer la clé des éléments présents, de la stocker sous forme d'objet dans la constante elt, puis de comparer l'id et l'option d'un objet récupéré dans le localStorage à l'id et à l'option de l'item ajouté au clic.
   for (i = 0; i < localStorage.length; i++) {
-    let element = localStorage.getItem(localStorage.key(i));
+    let element = localStorage.getItem(i);
     let elt = JSON.parse(element);
-
     if (elt.id === id && elt.option === option) {
       return i;
     }
@@ -43,7 +42,7 @@ function getId() {
 urlId = getId();
 
 function selectedUrl(urlId) {
-  return fetch(api("apiUrlRescue") + urlId)
+  return fetch(api("apiUrlOriginal") + urlId)
     .then(response => {
       return response.json();
     })
@@ -116,7 +115,7 @@ function displayCameraById(camera) {
 
   // options (titre)
   const lensesTitle = document.createElement("span");
-  lensesTitle.classList.add("lenses", "d-inline-block", "row-inline", "fw-bold", "fs-6", "sm-mx-2");
+  lensesTitle.classList.add("lenses", "row-inline", "fw-bold", "fs-6", "sm-mx-2");
   lensesTitle.innerText = "Lentilles :"
 
   /* options (select & options).
@@ -151,7 +150,7 @@ function displayCameraById(camera) {
   let btn = document.createElement("button");
   btn.id = "cartBtn";
   btn.setAttribute("type", "button");
-  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-10", "col-md-7", "center", "text-light");
+  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-10", "col-sm-7", "col-md-6", "col-xl-5", "center", "text-light");
   btn.innerText = "Ajouter au panier";
 
   //Ajout des articles aux paniers et définition des fonctionnalitées enclanchées au clic
@@ -168,7 +167,7 @@ function displayCameraById(camera) {
       "id": camera._id
     }
 
-    //création d'une constante qui à pour valeur une fonction ayant pour paramètre l'id et l'option de item créé au clic. 
+    //création d'une variable qui à pour valeur une fonction ayant pour paramètre l'id et l'option de item créé au clic. 
     let localStorageElt = getLocalStorageEltById(item.id, item.option);
 
     //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier

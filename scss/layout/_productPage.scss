@@ -29,10 +29,39 @@ img#logo {
   @include cards;
 }
 
+span.quantity,
+span.lenses {
+  @include small-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#quantity {
+  width: 40px;
+  @include small-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#selectOptions {
+  @include small-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .containerChoice {
   flex-direction: column;
   align-items: baseline;
   display: inline-block;
+  @include small-mobile {
+    align-items: unset;
+  }
 }
 
 select#selectOptions {

@@ -1,19 +1,19 @@
 
 
+/*******************************Page-1**Affichage de l"ensemble des produits*******************************/
 /*************************Données globales nécessaires à la construction du projet*************************/
 let cameras; //Choix du Produit à vendre.
 
 //permet de saisir l'Id dans lequel sera comptabiliser les articles ajouté au panier
 let compteur = document.getElementById("howManyInBag");
 compteur.innerHTML = localStorage.length;
-/*******************************Page-1**Affichage de l"ensemble des produits*******************************/
 
 /***********************************Récupération des éléments dans l"api***********************************/
 
 /* La méthode fetch, qui utilise des promesses, permet de faire des requêtes réseau pour récupérer des objets à partir d"une API. Pour obtenir le résultat de ma promesse, il faut retourner tout le fetch. Cependant, il retourne une promesse non résolu que l'on recupère dans la fonction suivante*/
 
 function getArticles() {
-  return fetch(api("apiUrlRescue"))
+  return fetch(api(/*"apiUrlRescue"*/ "apiUrlOriginal"))
     .then(response => {
       return response.json();
     })
