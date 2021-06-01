@@ -4,19 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scss": "sass --watch ./scss/style.scss:./css/style.css"
+    "scss": "sass --watch ./scss/style.scss:./css/style.css ./scss/productPage.scss:./css/productPage.css ./scss/cart-page.scss:./css/cart-page.css ./scss/confirmationPage.scss:./css/confirmationPage.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evy-vy/EvetriciaKalala_5b_25122020.git"
+    "url": "git+https: //github.com/evy-vy/EvetriciaKalala_5b_25122020.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/evy-vy/EvetriciaKalala_5b_25122020/issues"
+    "url": "https: //github.com/evy-vy/EvetriciaKalala_5b_25122020/issues"
   },
-  "homepage": "https://github.com/evy-vy/EvetriciaKalala_5b_25122020#readme",
+  "homepage": "https: //github.com/evy-vy/EvetriciaKalala_5b_25122020#readme",
   "dependencies": {
-    "bootstrap": "^4.6.0"
+    "bootstrap": "^5.0.0-beta3"
   }
 }

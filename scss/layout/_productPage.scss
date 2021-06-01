@@ -1,0 +1,102 @@
+body {
+  background: url("../images/photosPatschwork.webp  ") no-repeat fixed;
+  background-size: cover;
+  background-position: center ;
+}
+
+img#logo {
+  width: 55%;
+}
+
+.fixed-top {
+  position : unset;
+};
+
+#cameraId {
+  display: block;
+  margin-top: 15px;
+}
+
+.row {
+  justify-content: start;
+  margin-left: 20px;
+  @include small-mobile {
+    margin-left: 0;
+  }
+}
+
+.list {
+  @include cards;
+}
+
+span.quantity,
+span.lenses {
+  @include small-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#quantity {
+  width: 40px;
+  @include small-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#selectOptions {
+  @include small-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.containerChoice {
+  flex-direction: column;
+  align-items: baseline;
+  display: inline-block;
+  @include small-mobile {
+    align-items: unset;
+  }
+}
+
+select#selectOptions {
+  margin-top: 7px !important;
+  max-width: 110px;
+}
+
+.lenses {
+  display: inline-block;
+}
+
+input,
+select {
+  line-height: normal !important;
+  font-size: 1.1rem;
+}
+
+button.shopping-bag.btn.btn-primary {
+  margin-top: 35px;
+}
+
+ footer {
+  position: absolute;
+  width: 100%;
+  @include small-mobile {
+    font-size: 0.875rem;
+  }
+ }
+
+  @media screen and (min-height: 830px) {
+    footer {
+    &.bottom {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+

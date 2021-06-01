@@ -10797,25 +10797,34 @@ td:not([align]), th:not([align]) {
 }
 
 body {
-  background: url("../images/vintageCameraBg.webp") no-repeat fixed;
+  background: url("../images/photosPatschwork.webp  ") no-repeat fixed;
   background-size: cover;
-  background-color: #ebebeb;
   background-position: center;
 }
 
 img#logo {
-  width: 60%;
+  width: 55%;
 }
 
 .fixed-top {
   position: unset;
 }
 
-header {
-  position: relative;
+#cameraId {
+  display: block;
+  margin-top: 15px;
 }
 
-/* cards */
+.row {
+  justify-content: start;
+  margin-left: 20px;
+}
+@media screen and (max-width: 576px) {
+  .row {
+    margin-left: 0;
+  }
+}
+
 .list {
   display: flex;
 }
@@ -10850,6 +10859,64 @@ header {
   margin-bottom: 0.5rem;
 }
 
+@media screen and (max-width: 576px) {
+  span.quantity,
+span.lenses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#quantity {
+  width: 40px;
+}
+@media screen and (max-width: 576px) {
+  #quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #selectOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.containerChoice {
+  flex-direction: column;
+  align-items: baseline;
+  display: inline-block;
+}
+@media screen and (max-width: 576px) {
+  .containerChoice {
+    align-items: unset;
+  }
+}
+
+select#selectOptions {
+  margin-top: 7px !important;
+  max-width: 110px;
+}
+
+.lenses {
+  display: inline-block;
+}
+
+input,
+select {
+  line-height: normal !important;
+  font-size: 1.1rem;
+}
+
+button.shopping-bag.btn.btn-primary {
+  margin-top: 35px;
+}
+
 footer {
   position: absolute;
   width: 100%;
@@ -10860,4 +10927,11 @@ footer {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+@media screen and (min-height: 830px) {
+  footer.bottom {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=productPage.css.map */

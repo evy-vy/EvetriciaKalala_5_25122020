@@ -1,0 +1,201 @@
+img#logo {
+  width: 60%;
+}
+
+.fixed-top {
+  position : unset;
+};
+
+.jumboContainer {
+  overflow: hidden;
+  height: 200px;
+  background-color: #f8dee3;
+}
+
+.jumboContainer .row {
+  height: 200px;
+  overflow: hidden;
+}
+
+.jumbotron {
+  height: 200px;
+  display: flex;
+  overflow: hidden;  
+  &__title {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-weight: bold;
+  }
+}
+.container__title{
+  display: flex;
+  align-items: center;
+  width: 35%;
+}
+
+.tableau-panier {
+  margin: 5px auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cart-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article {
+  margin-left: 55px;
+  @include small-mobile {
+    margin-left: 10px;
+  }
+}
+
+.allLine {
+  border-bottom: solid 2px #f8f9fa;
+}
+
+th {
+  text-align: left;
+  padding: 5px;
+  color: #000;
+  background: #f8f9fa;
+  font-weight: bold;
+}
+td {
+  padding: 10px 5px;
+}
+
+td input {
+  width: 50px;
+  height: 30px;
+  padding: 5px;
+}
+td img {
+  width: 50%;
+  height: auto;
+  margin: 0 5px;
+  object-fit: cover;
+  @include small-mobile {
+    margin: 0 10px;
+  }
+}
+
+.imgNamePrice {
+  width: 50%;
+  height: auto;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.namePrice {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 85px;
+  @include small-mobile {
+    margin-left: 25px;
+  }
+}
+
+.montantTotal {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+.totalTableDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.totalTable{
+ width: 100%;
+}
+td:last-child{
+  text-align: right;
+}
+th:last-child{
+  text-align: right;
+}
+
+.container__img {
+  width: 50%;
+  display: flex;
+  object-fit: cover;
+}
+
+/* Cart page */
+.products-mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#products-container {
+      border: solid 5px #f8f9fa;
+}
+  
+  #removeAll,
+  .fas.fa-times-circle {
+    color: blue;
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+
+  .fas.fa-chevron-circle-left,
+  .fas.fa-chevron-circle-right {
+    color: blue;
+    cursor: pointer;
+  }
+
+
+#cartTotalAmountDiv {
+  display: flex;
+  justify-content: flex-end;
+  p {
+    border-top: 3px dashed #f8dee3;
+    padding : 10px;
+  }
+}
+
+/********************FORM*******************/
+
+.container__form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+form {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding : 15px;
+  display : flex;
+  flex-direction: column;
+  border: 2px dashed #f8dee3;
+}
+
+.form-title {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  @include small-mobile {
+    font-size: 0.875rem;
+  }
+}
+

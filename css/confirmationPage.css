@@ -10796,13 +10796,6 @@ td:not([align]), th:not([align]) {
   text-align: left;
 }
 
-body {
-  background: url("../images/vintageCameraBg.webp") no-repeat fixed;
-  background-size: cover;
-  background-color: #ebebeb;
-  background-position: center;
-}
-
 img#logo {
   width: 60%;
 }
@@ -10815,39 +10808,36 @@ header {
   position: relative;
 }
 
-/* cards */
-.list {
-  display: flex;
-}
-.list__card {
-  width: 200px;
-  height: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: solid 2px #fff;
+.confirmation {
+  margin-top: 50px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.3rem;
 }
-.list__title {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
+.confirmation__title {
+  font-size: 1.8rem;
+}
+@media screen and (max-width: 576px) {
+  .confirmation__title {
+    font-size: 1.1rem;
+  }
+}
+.confirmation__details {
+  font-size: 1.3rem;
+  font-family: bold;
+  border-bottom: 2px dashed #f8dee3;
+}
+.confirmation span {
   font-weight: bold;
 }
-.list__description {
-  text-align: initial;
-  font-size: 1rem;
-  margin-left: 1rem;
+
+.thanks {
+  border-bottom: dashed 2px #f8dee3;
 }
-.list__price {
-  align-self: start;
-  color: #f8d779;
+
+.bold {
   font-weight: bold;
-}
-.list__btn {
-  background-color: #c0b38d;
-  border-color: #c0b38d;
-  margin-bottom: 0.5rem;
 }
 
 footer {
@@ -10860,4 +10850,11 @@ footer {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+@media screen and (min-height: 766px) {
+  footer.bottom {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=confirmationPage.css.map */

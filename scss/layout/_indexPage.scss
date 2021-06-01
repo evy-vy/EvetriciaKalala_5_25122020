@@ -1,0 +1,33 @@
+body {
+  background: url("../images/vintageCameraBg.webp") no-repeat fixed;
+  background-size: cover;
+  background-color: #ebebeb;
+  background-position: center;
+}
+
+img#logo {
+  width: 60%;
+}
+
+.fixed-top {
+ position : unset;
+};
+
+header { 
+  position: relative;
+}
+
+/* cards */
+.list {
+  @include cards
+}
+
+
+ footer {
+  position: absolute;
+  width: 100%;
+  @include small-mobile {
+    font-size: 0.875rem;
+  }
+}
+
