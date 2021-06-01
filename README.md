@@ -8,7 +8,7 @@ __scénario__
 
 En tant que développeuse front-End chez Orinoco, une entreprise de commerce en ligne qui se démarque par ses applications thématiques, j'ai pour mission de créer une MVP qui démontre le fonctionnement d'une application à ses investisseurs. 
 
-L'application se compose de 4 pages:  
+L'application se compose de 4 pages + un plan test:  
 * Une page de vue d'ensemble montrant tous les articles disponibles à la vente;
 * Une page produit qui affiche de manière dynamique l'élément sélectionnée et permet à l'utilisateur de le personnaliser et de l'ajouter au panier;
 * Une page panier, qui contient un résumé des produits dans le panier, le prix total et un formulaire de commande
