@@ -45,6 +45,7 @@ header {
 footer {
   position: absolute;
   width: 100%;
+  z-index: -1;
   @include small-mobile {
     font-size: 0.875rem;
   }
@@ -53,6 +54,7 @@ footer {
 @media screen and (min-height: 766px) {
   footer {
   &.bottom {
+      z-index: -1;
       position: absolute;
       bottom: 0;
     }

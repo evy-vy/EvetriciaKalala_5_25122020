@@ -194,6 +194,7 @@ form {
 footer {
   position: absolute;
   width: 100%;
+  z-index: -1;
   @include small-mobile {
     font-size: 0.875rem;
   }

@@ -150,7 +150,7 @@ function displayCameraById(camera) {
   let btn = document.createElement("button");
   btn.id = "cartBtn";
   btn.setAttribute("type", "button");
-  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-10", "col-sm-7", "col-md-6", "col-xl-5", "center", "text-light");
+  btn.classList.add("list__btn", "btn", "add-cart", "mb-1", "col-10", "col-sm-8", "col-xl-6", "center", "text-light");
   btn.innerText = "Ajouter au panier";
 
   //Ajout des articles aux paniers et définition des fonctionnalitées enclanchées au clic

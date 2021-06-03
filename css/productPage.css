@@ -10888,13 +10888,18 @@ span.lenses {
 }
 
 .containerChoice {
-  flex-direction: column;
   align-items: baseline;
   display: inline-block;
 }
 @media screen and (max-width: 576px) {
   .containerChoice {
+    flex-direction: column;
     align-items: unset;
+  }
+}
+@media screen and (min-width: 993px) {
+  .containerChoice {
+    justify-content: space-evenly;
   }
 }
 
@@ -10920,6 +10925,7 @@ button.shopping-bag.btn.btn-primary {
 footer {
   position: absolute;
   width: 100%;
+  z-index: -1;
 }
 @media screen and (max-width: 576px) {
   footer {
@@ -10929,6 +10935,7 @@ footer {
 
 @media screen and (min-height: 830px) {
   footer.bottom {
+    z-index: -1;
     position: absolute;
     bottom: 0;
   }
